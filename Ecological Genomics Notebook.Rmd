@@ -14,9 +14,8 @@
 
 
 # Table of Contents:   
-* [Entry 1: 2020-01-13, Monday](#id-section1)
-* [Entry 2: 2020-01-14, Tuesday](#id-section2)
-* [Entry 3: 2020-01-15, Wednesday](#id-section3)
+* [Entry 1: 2020-01-13, Introductory Class](#id-section1)
+* [Entry 2: 2020-01-15, First Info Updates](#id-section2)
 * [Entry 4: 2020-01-16, Thursday](#id-section4)
 * [Entry 5: 2020-01-17, Friday](#id-section5)
 * [Entry 6: 2020-01-20, Monday](#id-section6)
@@ -124,7 +123,7 @@ Population Genetics:
 -- Whright-Fisher population: infinitely large, cloased and unfragmented, random mating, no natural selection
 
 - When N is finite and there are sampling effects, genetic drift occur
-- Island Model: Multiple popilations, subdivided but connected through migration.
+- Island Model: Multiple populations, subdivided but connected through migration.
 -Fst= (var(p))/(mean(p)(mean(q)))
 
 Selective Sweeps:
@@ -151,9 +150,26 @@ if: w >> 1 w>2 there is positive selection
 <div id='id-section2'/>   
 
 
-### Entry 2: 2020-01-14, Tuesday.   
+### Entry 2: 2020-01-15, Wednesday.   
 
+Firt info-update class
 
+To have in mind!
+
+1) Your Questions!
+
+2) Study organisms (Is there a reference genome? How big? Diploid, Hapliod, Polyploids?)
+
+3) Type of Sample (DNA, RNA, combination?)
+
+4) Library: biological library that has not been prepared.
+- Ex: Whole genome sequences, RNA Seq, Exom catcher, GBS, Amplicon Sequencing, Associated methods for epigenomics.
+
+5) Sequencing platform: Ilumina for short reads sequencing, Pac Bio and Nano probe for long reads.
+
+Info updates about: 
+1) Illumina, Long Reads sequences.
+2) RNA Seq, GNS, Bisulfite sequencing, Exome Capture Sequencing.
 
 ------    
 <div id='id-section3'/>   
