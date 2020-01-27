@@ -16,7 +16,7 @@
 # Table of Contents:   
 * [Entry 1: 2020-01-13, Introductory Class](#id-section1)
 * [Entry 2: 2020-01-15, First Info Updates](#id-section2)
-* [Entry 3: 2020-01-22, Second Info Updates](#id-section8)
+* [Entry 3: 2020-01-22, Second Info Updates](#id-section3)
 * [Entry 9: 2020-01-23, Thursday](#id-section9)
 * [Entry 10: 2020-01-24, Friday](#id-section10)
 * [Entry 11: 2020-01-27, Monday](#id-section11)
@@ -171,8 +171,59 @@ Info updates about:
 <div id='id-section3'/>   
 
 
-### Entry 3: 2020-01-15, Wednesday.   
+### Entry 3: 2020-01-22, Wednesday.   
 
+Second info-updates class
+
+My Info Update Presentation:
+
+Amplicon: Is a piece of DNA or RNA that is the source and/or product of amplification or replication events.
+
+In other words, is a segment of genetic material that undergoes simplification and contains replicated genetic material. Depending on what are you working with, amplicons can be direct repeat or inverted repeat, and can be linear or circular in structure. 
+
+Important: the term amplicon is often used interchangeably with PCR products.
+
+Amplicon sequences results in high coverage of a specific region, making amplicon sequences useful to detect variants at very low levels and frequencies. Also, it allows for multiplexing of samples.
+
+Useful for: genome targeting and detection  of hot-spot mutations, gene fusions, SNPs and in disciplines such as bacterial metagenomics or biodiversity assesments. 
+
+Steps:
+1) Sample Selection: Environmental Samples. 
+
+2) DNA or RNA extractions
+
+3) Library preparation:
+
+3a) First PCR to amplify target genes with primers synthethized with a head sequence at the end
+
+3b) Optimal purification
+
+3c) Second PCR to amplify products with primers that consist of the head sequence and include at the 5' end a library-specific barcode. 
+
+3d) Purification with magnetic beads and stand.
+
+3e) Once you get an equimlar amount of purified amplicons they are pooled
+
+4) Sequencing: Miseq Illumina Sequencing.
+
+
+First in class coding:
+
+First tutorial: https://pespenilab.github.io/Ecological-Genomics/Tutorial/2020-01-22_Command_Line_Unix.html
+
+Major calls: 
+
+pwd : to know where do you live on the server
+
+~/ : same thing as typing /users/j/r/jruizaro
+
+cd : change directory
+
+mkdir : make directory
+
+ll : to look what is inside directory
+
+head : to look first rows of a document
 
 
 ------    
