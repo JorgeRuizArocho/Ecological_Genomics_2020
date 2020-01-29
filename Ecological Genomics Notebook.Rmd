@@ -270,6 +270,26 @@ Because files inside RS_ExomeSeq are .gz, to see the individual file we can no u
 
 * Phred Quality Score: 10 or < 90 % accuracy 20 or > more than 99% accuracy: example p=10^(-38/10)= prob(of the machine misscalling the nucleotide on the loci) = 0.0038.
 
+Population assigned to me: WA. 
+
+1. vim in myscripts
+2. press i
+3. #!/bin/bash
+4. cd ~/Ecological_Genomics_2020/myresults/ 
+5. mkdir fastqc
+6. for file /data/project_data/RS_ExomeSeq/fastq/edge_fastq/WA*fastq.gz
+
+6.5 do
+
+7. Output file in /fastqc: fastqc ${file} -o fastqc/
+8. Closing the loop: done
+9. Exit editing mode: ESC, shift :, wq fastqc.sh
+
+To move files aroud: mv filename dir/ 
+
+10. permision: -rw-r--r-- without x means file is not executable, then chmod u+x fastqc.sh.
+
+11. bash fastqc.sh
 
 
 

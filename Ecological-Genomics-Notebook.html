@@ -583,6 +583,26 @@ summary {
 <li><p>We will see the barcodes indexes (pair) with a four line with a quality encoding score called the Q score.</p></li>
 <li><p>Phred Quality Score: 10 or &lt; 90 % accuracy 20 or &gt; more than 99% accuracy: example p=10^(-38/10)= prob(of the machine misscalling the nucleotide on the loci) = 0.0038.</p></li>
 </ul>
+<p>Population assigned to me: WA.</p>
+<ol style="list-style-type: decimal">
+<li>vim in myscripts</li>
+<li>press i</li>
+<li>#!/bin/bash</li>
+<li>cd ~/Ecological_Genomics_2020/myresults/</li>
+<li>mkdir fastqc</li>
+<li>for file /data/project_data/RS_ExomeSeq/fastq/edge_fastq/WA*fastq.gz</li>
+</ol>
+<p>6.5 do</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Output file in /fastqc: fastqc ${file} -o fastqc/</li>
+<li>Closing the loop: done</li>
+<li>Exit editing mode: ESC, shift :, wq fastqc.sh</li>
+</ol>
+<p>To move files aroud: mv filename dir/</p>
+<ol start="10" style="list-style-type: decimal">
+<li><p>permision: -rw-r–r– without x means file is not executable, then chmod u+x fastqc.sh.</p></li>
+<li><p>bash fastqc.sh</p></li>
+</ol>
 <hr />
 <div id="id-section6"></div>
 
