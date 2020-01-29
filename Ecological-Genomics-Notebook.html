@@ -553,15 +553,36 @@ summary {
 
 
 </div>
-<div id="entry-4-2020-01-16-thursday." class="section level3">
-<h3>Entry 4: 2020-01-16, Thursday.</h3>
+<div id="entry-4-2020-01-27-monday." class="section level3">
+<h3>Entry 4: 2020-01-27, Monday.</h3>
 <hr />
 <div id="id-section5"></div>
 
 
 </div>
-<div id="entry-5-2020-01-17-friday." class="section level3">
-<h3>Entry 5: 2020-01-17, Friday.</h3>
+<div id="entry-5-2020-01-29-wednesday." class="section level3">
+<h3>Entry 5: 2020-01-29, Wednesday.</h3>
+<p>Second Tutorial: Working with batch scripts</p>
+<p>Red spruce: tree species that has undergoes through latitudinal and elevational migration. Now there are unconnected and fragmentated populations in the top of the appalachians going from New York to South Carolina.</p>
+<p>In our dataset, we are working with genomic DNA of 110 mother trees from 23 populations.</p>
+</div>
+<div id="pipeline" class="section level3">
+<h3>Pipeline:</h3>
+<ol style="list-style-type: decimal">
+<li><p>.fastq.gz, we will visualize them using FastQC</p></li>
+<li><p>trimmed.fastq, using Trimmomatic</p></li>
+<li><p>Visualize the post trimming</p></li>
+<li><p>Map or align to the references genome</p></li>
+<li><p>Map (or align) to the reference genome using bwa. File: .sam</p></li>
+<li><p>post.processing using samtools and sambamba. Making a binary file: .bam</p></li>
+<li><p>remove drops, stats</p></li>
+</ol>
+<p>Coding in or tutorial webpage.</p>
+<p>Because files inside RS_ExomeSeq are .gz, to see the individual file we can no use head.We use zcat instead, to see it without uncomprresing it: (zcat NAME) | head -n 4.</p>
+<ul>
+<li><p>We will see the barcodes indexes (pair) with a four line with a quality encoding score called the Q score.</p></li>
+<li><p>Phred Quality Score: 10 or &lt; 90 % accuracy 20 or &gt; more than 99% accuracy: example p=10^(-38/10)= prob(of the machine misscalling the nucleotide on the loci) = 0.0038.</p></li>
+</ul>
 <hr />
 <div id="id-section6"></div>
 

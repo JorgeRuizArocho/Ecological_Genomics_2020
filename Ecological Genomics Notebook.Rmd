@@ -230,7 +230,7 @@ head : to look first rows of a document
 <div id='id-section4'/>   
 
 
-### Entry 4: 2020-01-16, Thursday.   
+### Entry 4: 2020-01-27, Monday.   
 
 
 
@@ -238,7 +238,41 @@ head : to look first rows of a document
 <div id='id-section5'/>   
 
 
-### Entry 5: 2020-01-17, Friday.   
+### Entry 5: 2020-01-29, Wednesday.   
+
+Second Tutorial: Working with batch scripts
+
+Red spruce: tree species that has undergoes through latitudinal and elevational migration. Now there are unconnected and fragmentated populations in the top of the appalachians going from New York to South Carolina. 
+
+In our dataset, we are working with genomic DNA of 110 mother trees from 23 populations. 
+
+### Pipeline:
+
+1. .fastq.gz, we will visualize them using FastQC
+
+2. trimmed.fastq, using Trimmomatic
+
+3. Visualize the post trimming
+
+4. Map or align to the references genome
+
+5. Map (or align) to the reference genome using bwa. File: .sam
+
+6. post.processing using samtools and sambamba. Making a binary file: .bam
+
+7. remove drops, stats
+
+Coding in or tutorial webpage. 
+
+Because files inside RS_ExomeSeq are .gz, to see the individual file we can no use head.We use zcat instead, to see it without uncomprresing it: (zcat NAME) | head -n 4. 
+
+* We will see the barcodes indexes (pair) with a four line with a quality encoding score called the Q score. 
+
+* Phred Quality Score: 10 or < 90 % accuracy 20 or > more than 99% accuracy: example p=10^(-38/10)= prob(of the machine misscalling the nucleotide on the loci) = 0.0038.
+
+
+
+
 
 
 
