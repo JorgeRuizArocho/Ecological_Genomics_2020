@@ -19,7 +19,7 @@
 * [Entry 3: 2020-01-22, Second Info Updates](#id-section3)
 * [Entry 4: 2020-01-27, Fisrt Paper Discussion](#id-section9)
 * [Entry 5: 2020-01-29, Second Tutorial](#id-section10)
-* [Entry 11: 2020-01-27, Monday](#id-section11)
+* [Entry 11: 2020-02-03, Second Paper Dicsussion](#id-section11)
 * [Entry 12: 2020-01-28, Tuesday](#id-section12)
 * [Entry 13: 2020-01-29, Wednesday](#id-section13)
 * [Entry 14: 2020-01-30, Thursday](#id-section14)
@@ -310,7 +310,7 @@
 
 * In our dataset, we are working with genomic DNA of 110 mother trees from 23 populations. 
 
-### Pipeline:
+#### Pipeline:
 
 1. .fastq.gz, we will visualize them using FastQC.
 
@@ -336,7 +336,7 @@
 
 #### Population assigned to me: WA. 
 
-#### StepsL
+#### Step:
 
 1. vim in myscripts
 
@@ -350,7 +350,7 @@
 
 6. for file /data/project_data/RS_ExomeSeq/fastq/edge_fastq/WA*fastq.gz
 
-6.5 do
+6.5. do
 
 7. Output file in /fastqc: fastqc ${file} -o fastqc/
 
@@ -366,7 +366,7 @@
 
 12. Push everything and pull it bacj to your local repository.
 
-#Now, we are going to trim.
+#### Now, we are going to trim.
 
 1. Using Trimmomatic.
 
@@ -377,17 +377,63 @@
 4. bash trim_loop.sh
 
 
-
-
-
-
-
 ------    
-<div id='id-section6'/>   
+<div id='id-section11'/>   
 
 
-### Entry 6: 2020-01-20, Monday.   
+### Entry 6: 2020-02-03, Second Paper Dicsussion   
 
+### Info-updated
+
+### Genomic diversity - How to calculated and what it does it say?
+
+* Effective population size = population size of an ideal population that follows W-F assumptions.
+
+* Factors deviating Ne from N: 
+
+1. Non-random mating
+
+2. Selection
+
+3. Reproductive Skew 
+
+4. Non-constant population size
+
+5. Unequal sex ratio (Segwall Wright) <= Ne = (4Nm x Nf)/(Nm + Nf)
+
+6. Can be estimated by previous formulas, but there will be other variables (ex. mutations, migration, etc.) which will end up affecting Ne.
+
+7. nucleotide diversity (or pi) = 4(Ne or net probability difference in nucleotide) u (or mutation rate with units of changes per site per generation)
+
+* Nei's genetic distance - measurement of diversity
+
+* Fst (population structure) = 1/(pi + 1) (as pi increases Fst decreases, menas population is more homogenous)
+
+* or Fst = 1 - (Hs (or average H of subpop.)/Ht (or average H for whole pop.))
+
+* Heterozygozity (H): condition of having two different alleles at a locus.
+
+* Site Frequency Spectrum: distribution of the allele frequencies of a given set of loci (often SNPs) in a population or sample. 
+
+* Tajima's D: statistic that compares the average number of pairwise differences with the number of segregating sites. If = 0, in equilibrium, factors are not influencing too much. < 0 (expansion, we will have more rare alleles or more rare mutations appearing) or > 0 (contraction).  
+
+### Paper Discussion (Evolution of sociality in spiders leads to depleted genomic diversity at both population and species level)
+
+Take Home Message: How the transition to sociology can affect Ne? Non-random mating, Reproductive Skew, Unequal sex ratio.
+
+* Fst = 1 - (average pi of subpopulation/ total species pi)
+
+* lower K = more geneflow
+
+* Inbreeding coefficient: how much inbreeding is happening.
+
+* Migration push TMRCA further back in the past. 
+
+* Social = total pi = 0.00056, Ne = 21 x 10^3
+
+* Subsocial = total pi = 0.00474, Ne = 178 x 10^3
+
+* mutation rate = 6.65 x 10^-9
 
 
 ------    

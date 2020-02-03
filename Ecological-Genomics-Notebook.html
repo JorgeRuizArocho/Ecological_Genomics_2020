@@ -394,7 +394,7 @@ summary {
 <li><a href="#id-section3">Entry 3: 2020-01-22, Second Info Updates</a></li>
 <li><a href="#id-section9">Entry 4: 2020-01-27, Fisrt Paper Discussion</a></li>
 <li><a href="#id-section10">Entry 5: 2020-01-29, Second Tutorial</a></li>
-<li><a href="#id-section11">Entry 11: 2020-01-27, Monday</a></li>
+<li><a href="#id-section11">Entry 11: 2020-02-03, Second Paper Dicsussion</a></li>
 <li><a href="#id-section12">Entry 12: 2020-01-28, Tuesday</a></li>
 <li><a href="#id-section13">Entry 13: 2020-01-29, Wednesday</a></li>
 <li><a href="#id-section14">Entry 14: 2020-01-30, Thursday</a></li>
@@ -666,9 +666,8 @@ summary {
 <li><p>Species of Interest: Red spruce. Tree species that has undergoes through latitudinal and elevational migration. Now there are unconnected and fragmentated populations in the top of the appalachians going from New York to South Carolina.</p></li>
 <li><p>In our dataset, we are working with genomic DNA of 110 mother trees from 23 populations.</p></li>
 </ul>
-</div>
-<div id="pipeline" class="section level3">
-<h3>Pipeline:</h3>
+<div id="pipeline" class="section level4">
+<h4>Pipeline:</h4>
 <ol style="list-style-type: decimal">
 <li><p>.fastq.gz, we will visualize them using FastQC.</p></li>
 <li><p>trimmed.fastq, using Trimmomatic.</p></li>
@@ -684,11 +683,12 @@ summary {
 <li><p>We will see the barcodes indexes (pair) with a four line with a quality encoding score called the Q score.</p></li>
 <li><p>Phred Quality Score: 10 or &lt; 90 % accuracy 20 or &gt; more than 99% accuracy: example p=10^(-38/10)= prob(of the machine misscalling the nucleotide on the loci) = 0.0038.</p></li>
 </ul>
+</div>
 <div id="population-assigned-to-me-wa." class="section level4">
 <h4>Population assigned to me: WA.</h4>
 </div>
-<div id="stepsl" class="section level4">
-<h4>StepsL</h4>
+<div id="step" class="section level4">
+<h4>Step:</h4>
 <ol style="list-style-type: decimal">
 <li><p>vim in myscripts</p></li>
 <li><p>press i</p></li>
@@ -697,7 +697,7 @@ summary {
 <li><p>mkdir fastqc</p></li>
 <li><p>for file /data/project_data/RS_ExomeSeq/fastq/edge_fastq/WA*fastq.gz</p></li>
 </ol>
-<p>6.5 do</p>
+<p>6.5. do</p>
 <ol start="7" style="list-style-type: decimal">
 <li><p>Output file in /fastqc: fastqc ${file} -o fastqc/</p></li>
 <li><p>Closing the loop: done</p></li>
@@ -711,7 +711,9 @@ summary {
 <li><p>bash fastqc.sh</p></li>
 <li><p>Push everything and pull it bacj to your local repository.</p></li>
 </ol>
-<p>#Now, we are going to trim.</p>
+</div>
+<div id="now-we-are-going-to-trim." class="section level4">
+<h4>Now, we are going to trim.</h4>
 <ol style="list-style-type: decimal">
 <li><p>Using Trimmomatic.</p></li>
 <li><p>Download from data/scripts and save it into my scripts: cp trim_loop.sh ~/REPOSITORY/myscripts/</p></li>
@@ -719,13 +721,53 @@ summary {
 <li><p>bash trim_loop.sh</p></li>
 </ol>
 <hr />
-<div id="id-section6"></div>
+<div id="id-section11"></div>
 
 
 </div>
 </div>
-<div id="entry-6-2020-01-20-monday." class="section level3">
-<h3>Entry 6: 2020-01-20, Monday.</h3>
+<div id="entry-6-2020-02-03-second-paper-dicsussion" class="section level3">
+<h3>Entry 6: 2020-02-03, Second Paper Dicsussion</h3>
+</div>
+<div id="info-updated" class="section level3">
+<h3>Info-updated</h3>
+</div>
+<div id="genomic-diversity---how-to-calculated-and-what-it-does-it-say" class="section level3">
+<h3>Genomic diversity - How to calculated and what it does it say?</h3>
+<ul>
+<li><p>Effective population size = population size of an ideal population that follows W-F assumptions.</p></li>
+<li><p>Factors deviating Ne from N:</p></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Non-random mating</p></li>
+<li><p>Selection</p></li>
+<li><p>Reproductive Skew</p></li>
+<li><p>Non-constant population size</p></li>
+<li><p>Unequal sex ratio (Segwall Wright) &lt;= Ne = (4Nm x Nf)/(Nm + Nf)</p></li>
+<li><p>Can be estimated by previous formulas, but there will be other variables (ex. mutations, migration, etc.) which will end up affecting Ne.</p></li>
+<li><p>nucleotide diversity (or pi) = 4(Ne or net probability difference in nucleotide) u (or mutation rate with units of changes per site per generation)</p></li>
+</ol>
+<ul>
+<li><p>Nei’s genetic distance - measurement of diversity</p></li>
+<li><p>Fst (population structure) = 1/(pi + 1) (as pi increases Fst decreases, menas population is more homogenous)</p></li>
+<li><p>or Fst = 1 - (Hs (or average H of subpop.)/Ht (or average H for whole pop.))</p></li>
+<li><p>Heterozygozity (H): condition of having two different alleles at a locus.</p></li>
+<li><p>Site Frequency Spectrum: distribution of the allele frequencies of a given set of loci (often SNPs) in a population or sample.</p></li>
+<li><p>Tajima’s D: statistic that compares the average number of pairwise differences with the number of segregating sites. If = 0, in equilibrium, factors are not influencing too much. &lt; 0 (expansion, we will have more rare alleles or more rare mutations appearing) or &gt; 0 (contraction).</p></li>
+</ul>
+</div>
+<div id="paper-discussion-evolution-of-sociality-in-spiders-leads-to-depleted-genomic-diversity-at-both-population-and-species-level" class="section level3">
+<h3>Paper Discussion (Evolution of sociality in spiders leads to depleted genomic diversity at both population and species level)</h3>
+<p>Take Home Message: How the transition to sociology can affect Ne? Non-random mating, Reproductive Skew, Unequal sex ratio.</p>
+<ul>
+<li><p>Fst = 1 - (average pi of subpopulation/ total species pi)</p></li>
+<li><p>lower K = more geneflow</p></li>
+<li><p>Inbreeding coefficient: how much inbreeding is happening.</p></li>
+<li><p>Migration push TMRCA further back in the past.</p></li>
+<li><p>Social = total pi = 0.00056, Ne = 21 x 10^3</p></li>
+<li><p>Subsocial = total pi = 0.00474, Ne = 178 x 10^3</p></li>
+<li><p>mutation rate = 6.65 x 10^-9</p></li>
+</ul>
 <hr />
 <div id="id-section7"></div>
 
