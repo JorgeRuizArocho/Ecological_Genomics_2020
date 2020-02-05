@@ -20,13 +20,7 @@
 * [Entry 4: 2020-01-27, Fisrt Paper Discussion](#id-section9)
 * [Entry 5: 2020-01-29, Second Tutorial](#id-section10)
 * [Entry 11: 2020-02-03, Second Paper Dicsussion](#id-section11)
-* [Entry 12: 2020-01-28, Tuesday](#id-section12)
-* [Entry 13: 2020-01-29, Wednesday](#id-section13)
-* [Entry 14: 2020-01-30, Thursday](#id-section14)
-* [Entry 15: 2020-01-31, Friday](#id-section15)
-* [Entry 16: 2020-02-03, Monday](#id-section16)
-* [Entry 17: 2020-02-04, Tuesday](#id-section17)
-* [Entry 18: 2020-02-05, Wednesday](#id-section18)
+* [Entry 18: 2020-02-05, Third Tutorial](#id-section18)
 * [Entry 19: 2020-02-06, Thursday](#id-section19)
 * [Entry 20: 2020-02-07, Friday](#id-section20)
 * [Entry 21: 2020-02-10, Monday](#id-section21)
@@ -437,10 +431,20 @@ Take Home Message: How the transition to sociology can affect Ne? Non-random mat
 
 
 ------    
-<div id='id-section7'/>   
+<div id='id-section18'/>   
 
 
-### Entry 7: 2020-01-21, Tuesday.   
+### Entry 7: 2020-02-05, Third Tutorial   
+
+[Third Tutorial](https://pespenilab.github.io/Ecological-Genomics/2020-02-05_PopGenomics_Day2.html)
+
+#### Mapping cleaned and trimmed reads against the reference genome
+
+[congenie](http://congenie.org/) to look for availability of reference genomes.
+
+* wget -> to get genomes from the internet
+
+* We are going to use a subsetted of the reference genome to include just the contigs that contain one or more probes from our exon capture experiment. 
 
 
 
