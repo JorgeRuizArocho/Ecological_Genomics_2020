@@ -17,16 +17,10 @@
 * [Entry 1: 2020-01-13, Introductory Class](#id-section1)
 * [Entry 2: 2020-01-15, First Info Updates](#id-section2)
 * [Entry 3: 2020-01-22, Second Info Updates](#id-section3)
-* [Entry 9: 2020-01-23, Thursday](#id-section9)
-* [Entry 10: 2020-01-24, Friday](#id-section10)
-* [Entry 11: 2020-01-27, Monday](#id-section11)
-* [Entry 12: 2020-01-28, Tuesday](#id-section12)
-* [Entry 13: 2020-01-29, Wednesday](#id-section13)
-* [Entry 14: 2020-01-30, Thursday](#id-section14)
-* [Entry 15: 2020-01-31, Friday](#id-section15)
-* [Entry 16: 2020-02-03, Monday](#id-section16)
-* [Entry 17: 2020-02-04, Tuesday](#id-section17)
-* [Entry 18: 2020-02-05, Wednesday](#id-section18)
+* [Entry 4: 2020-01-27, Fisrt Paper Discussion](#id-section9)
+* [Entry 5: 2020-01-29, Second Tutorial](#id-section10)
+* [Entry 11: 2020-02-03, Second Paper Dicsussion](#id-section11)
+* [Entry 18: 2020-02-05, Third Tutorial](#id-section18)
 * [Entry 19: 2020-02-06, Thursday](#id-section19)
 * [Entry 20: 2020-02-07, Friday](#id-section20)
 * [Entry 21: 2020-02-10, Monday](#id-section21)
@@ -100,215 +94,357 @@
 <div id='id-section1'/>   
 
 
-### Entry 1: 2020-01-13, Monday.   
+### Entry 1: 2020-01-13, Introductory Class.   
 
-Introductory class:
+#### Ecological Genomics:
+* species interactions @ genomic look. 
 
-Ecological Genomics
-- species interactions @ genomic look. 
-- Study of genes with relation to organims interacting with the enviroment.
-- Inherently about evolution. 
+* Study of genes with relation to organims interacting with the enviroment.
 
-Population Genetics:
-- 1920s-1930s
-- Sewall Wright and R.A. Fisher
-- Mathematical Theory:
--- A1A2
--- p + q = 1 (allele frequencies adding to 1)
--- HWE: 1 = p^2 + 2pq + q^2
--- Whright-Fisher population: infinitely large, cloased and unfragmented, random mating, no natural selection
+* Inherently about evolution. 
 
-- When N is finite and there are sampling effects, genetic drift occur
-- Island Model: Multiple populations, subdivided but connected through migration.
--Fst= (var(p))/(mean(p)(mean(q)))
+#### Population Genetics:
+* 1920s-1930s
 
-Selective Sweeps:
-- 1970s: allozymes
-- 1980s: PCR, microsatelltes, DNA sequences using Sanger's method
+* Sewall Wright and R.A. Fisher
 
-Molecular Evolution:
-- M. Kimura, important architect of moleculat evolution field. 
--- Neutral Theory of Molecular Evolution
+* Mathematical Theory:
 
-- Probability of a new mutation 1/2N = mu and the the prbability of being fixed.
+1.  A1A2
 
-- dN/dS = (Nmutations/Nsites)/(Synonimous mutations/S sites) = w
-if: w >> 1 w>2 there is positive selection
-    w = 1 neutral
-    w << 1 negative or purifying selections
+2. p + q = 1 (allele frequencies adding to 1)
+
+3.  HWE: 1 = p^2 + 2pq + q^2
+
+4. Whright-Fisher population: infinitely large, cloased and unfragmented, random mating, no natural selection
+
+* When N is finite and there are sampling effects, genetic drift occur.
+
+* Island Model: Multiple populations, subdivided but connected through migration.
+
+* Fst= (var(p))/(mean(p)(mean(q)))
+
+#### Selective Sweeps:
+
+* 1970s: allozymes
+
+* 1980s: PCR, microsatelltes, DNA sequences using Sanger's method
+
+#### Molecular Evolution:
+
+* M. Kimura, important architect of moleculat evolution field. 
+
+* Neutral Theory of Molecular Evolution.
+
+* Probability of a new mutation 1/2N = mu and the the prbability of being fixed.
+
+* dN/dS = (Nmutations/Nsites)/(Synonimous mutations/S sites) = w, if: 
+
+1. w >> 1 w>2 there is positive selection
+
+2. w = 1 neutral
+
+3. w << 1 negative or purifying selections
   
-- Tajima's D
--- pi = nucleotide diversity
--- S = number of segregating sites
--- Pairwise calculations. 
+* Tajima's D
+
+1. pi = nucleotide diversity
+
+2. S = number of segregating sites
+
+3. Pairwise calculations. 
 
 ------    
 <div id='id-section2'/>   
 
 
-### Entry 2: 2020-01-15, Wednesday.   
+### Entry 2: 2020-01-15, First info-update class.   
 
-Firt info-update class
+#### To have in mind!
 
-To have in mind!
+* Your Questions!
 
-1) Your Questions!
+* Study organisms (Is there a reference genome? How big? Diploid, Hapliod, Polyploids?)
 
-2) Study organisms (Is there a reference genome? How big? Diploid, Hapliod, Polyploids?)
+* Type of Sample (DNA, RNA, combination?)
 
-3) Type of Sample (DNA, RNA, combination?)
+* Library: biological library that has not been prepared.
 
-4) Library: biological library that has not been prepared.
-- Ex: Whole genome sequences, RNA Seq, Exom catcher, GBS, Amplicon Sequencing, Associated methods for epigenomics.
+1. Ex: Whole genome sequences, RNA Seq, Exom catcher, GBS, Amplicon Sequencing, Associated methods for epigenomics.
 
-5) Sequencing platform: Ilumina for short reads sequencing, Pac Bio and Nano probe for long reads.
+* Sequencing platform: Ilumina for short reads sequencing, Pac Bio and Nano probe for long reads.
 
-Info updates about: 
-1) Illumina, Long Reads sequences.
-2) RNA Seq, GNS, Bisulfite sequencing, Exome Capture Sequencing.
+#### Info updates about: 
+
+1. Illumina, Long Reads sequences.
+
+2. RNA Seq, GNS, Bisulfite sequencing, Exome Capture Sequencing.
 
 ------    
 <div id='id-section3'/>   
 
 
-### Entry 3: 2020-01-22, Wednesday.   
+### Entry 3: 2020-01-22, Second info-updates class.   
 
-Second info-updates class
+### My Info Update Presentation:
 
-My Info Update Presentation:
+* Amplicon: Is a piece of DNA or RNA that is the source and/or product of amplification or replication events.
 
-Amplicon: Is a piece of DNA or RNA that is the source and/or product of amplification or replication events.
+* In other words, is a segment of genetic material that undergoes simplification and contains replicated genetic material. Depending on what are you working with, amplicons can be direct repeat or inverted repeat, and can be linear or circular in structure. 
 
-In other words, is a segment of genetic material that undergoes simplification and contains replicated genetic material. Depending on what are you working with, amplicons can be direct repeat or inverted repeat, and can be linear or circular in structure. 
+* Important: the term amplicon is often used interchangeably with PCR products.
 
-Important: the term amplicon is often used interchangeably with PCR products.
+* Amplicon sequences results in high coverage of a specific region, making amplicon sequences useful to detect variants at very low levels and frequencies. Also, it allows for multiplexing of samples.
 
-Amplicon sequences results in high coverage of a specific region, making amplicon sequences useful to detect variants at very low levels and frequencies. Also, it allows for multiplexing of samples.
+* Useful for: genome targeting and detection  of hot-spot mutations, gene fusions, SNPs and in disciplines such as bacterial metagenomics or biodiversity assesments. 
 
-Useful for: genome targeting and detection  of hot-spot mutations, gene fusions, SNPs and in disciplines such as bacterial metagenomics or biodiversity assesments. 
+### Steps:
 
-Steps:
-1) Sample Selection: Environmental Samples. 
+1. Sample Selection: Environmental Samples. 
 
-2) DNA or RNA extractions
+2. DNA or RNA extractions.
 
-3) Library preparation:
+3. Library preparation:
 
-3a) First PCR to amplify target genes with primers synthethized with a head sequence at the end
+3a. First PCR to amplify target genes with primers synthethized with a head sequence at the end.
 
-3b) Optimal purification
+3b. Optimal purification
 
-3c) Second PCR to amplify products with primers that consist of the head sequence and include at the 5' end a library-specific barcode. 
+3c. Second PCR to amplify products with primers that consist of the head sequence and include at the 5' end a library-specific barcode. 
 
-3d) Purification with magnetic beads and stand.
+3d. Purification with magnetic beads and stand.
 
-3e) Once you get an equimlar amount of purified amplicons they are pooled
+3e. Once you get an equimlar amount of purified amplicons they are pooled.
 
-4) Sequencing: Miseq Illumina Sequencing.
-
-
-First in class coding:
-
-First tutorial: https://pespenilab.github.io/Ecological-Genomics/Tutorial/2020-01-22_Command_Line_Unix.html
-
-Major calls: 
-
-pwd : to know where do you live on the server
-
-~/ : same thing as typing /users/j/r/jruizaro
-
-cd : change directory
-
-mkdir : make directory
-
-ll : to look what is inside directory
-
-head : to look first rows of a document
+4. Sequencing: Miseq Illumina Sequencing.
 
 
-------    
-<div id='id-section4'/>   
+#### First in class coding:
 
+[First coding tutorial](https://pespenilab.github.io/Ecological-Genomics/Tutorial/2020-01-22_Command_Line_Unix.html)
 
-### Entry 4: 2020-01-27, Monday.   
+* Major calls: 
 
+1. pwd : to know where do you live on the server
+
+2. ~/ : same thing as typing /users/j/r/jruizaro
+
+3. cd : change directory
+
+4. mkdir : make directory
+
+5. ll : to look what is inside directory
+
+6. head : to look first rows of a document
 
 
 ------    
-<div id='id-section5'/>   
+<div id='id-section9'/>   
 
 
-### Entry 5: 2020-01-29, Wednesday.   
+### Entry 4: 2020-01-27, First paper discussion.   
 
-Second Tutorial: Working with batch scripts
+[Temporal genomic contrasts reveal rapid evolutionary responses in an alpine mammal during recent climate change](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1008119)
 
-Red spruce: tree species that has undergoes through latitudinal and elevational migration. Now there are unconnected and fragmentated populations in the top of the appalachians going from New York to South Carolina. 
+* Take Home Message: Environmental changes inluences demographic patterns with quantifiable changes to selection and genetic drift. 
 
-In our dataset, we are working with genomic DNA of 110 mother trees from 23 populations. 
+### Common Vocabulary
 
-### Pipeline:
+1. Population Genomics: selection and drift across the genome. 
 
-1. .fastq.gz, we will visualize them using FastQC
+* Drift: demographic - changes in abundance and in distribution, cause by environmental changes.
 
-2. trimmed.fastq, using Trimmomatic
+* Selection: changes in selection.
 
-3. Visualize the post trimming
+* In population genomics, linkages and interactions are studied, in population genetics not. 
 
-4. Map or align to the references genome
+2. Looking across the genome is challenging cause signals can be undistinguishable. We need to separate and differenctiate the results that demographhic changes and selection leave at the genome.
 
-5. Map (or align) to the reference genome using bwa. File: .sam
+3. Genomic environment is an environment by itself.
 
-6. post.processing using samtools and sambamba. Making a binary file: .bam
+4. Linkage disequilibrium: non-random association of alleles at two or more loci in a general population. 
+
+5. We expect selection to act locality and on a particular site with LD, while we expect drift to act globally (affecting the mean, variance and the diversity).
+
+6. Demographic history: 
+
+* Ne = effective population size, size where a population behave as if it were a W-F population.
+
+* Smaller population size, greater the drift.
+
+* Migration = gene flow among and between populationg.
+
+* Divergence time. 
+
+* Coalescent theory: probability of two random alleles copies sharing a common ancestor or accommon gene in the past.
+
+* 2Ne allele copies in a population of Ne individuals. 
+
+* We need to sample enough to capture the most recent common ancestor,
+
+* If a population is changing in size, that will affect the rate of coalescence appearance. You can use this know understand the behavior of the population (ex: bottleneck, expansion, etc.)
+
+* If Ne split = divergence, first you will see a lot of colescence and back in time it will slow down. 
+
+* In a bottleneck, you will lose many of the rare lineages and retain common ones.
+
+* Site-frequency expectrum.
+
+7. Positive Selection
+
+------    
+<div id='id-section10'/>   
+
+
+### Entry 5: 2020-01-29, Second Tutorial: Working with batch scripts.   
+
+[Second Tutorial](https://pespenilab.github.io/Ecological-Genomics/2020-01-29_PopGenomics_Day1.html)
+
+* Species of Interest: Red spruce. Tree species that has undergoes through latitudinal and elevational migration. Now there are unconnected and fragmentated populations in the top of the appalachians going from New York to South Carolina. 
+
+* In our dataset, we are working with genomic DNA of 110 mother trees from 23 populations. 
+
+#### Pipeline:
+
+1. .fastq.gz, we will visualize them using FastQC.
+
+2. trimmed.fastq, using Trimmomatic.
+
+3. Visualize the post trimming.
+
+4. Map or alignment to the references genome.
+
+5. Map (or align) to the reference genome using bwa. File: .sam.
+
+6. post.processing using samtools and sambamba. Making a binary file: .bam.
 
 7. remove drops, stats
 
-Coding in or tutorial webpage. 
+[Second Tutorial](https://pespenilab.github.io/Ecological-Genomics/2020-01-29_PopGenomics_Day1.html) 
 
-Because files inside RS_ExomeSeq are .gz, to see the individual file we can no use head.We use zcat instead, to see it without uncomprresing it: (zcat NAME) | head -n 4. 
+* Because files inside RS_ExomeSeq are .gz, to see the individual file we can no use head.We use zcat instead, to see it without uncomprresing it: (zcat NAME) | head -n 4. 
 
 * We will see the barcodes indexes (pair) with a four line with a quality encoding score called the Q score. 
 
 * Phred Quality Score: 10 or < 90 % accuracy 20 or > more than 99% accuracy: example p=10^(-38/10)= prob(of the machine misscalling the nucleotide on the loci) = 0.0038.
 
-Population assigned to me: WA. 
+#### Population assigned to me: WA. 
+
+#### Step:
 
 1. vim in myscripts
+
 2. press i
+
 3. #!/bin/bash
+
 4. cd ~/Ecological_Genomics_2020/myresults/ 
+
 5. mkdir fastqc
+
 6. for file /data/project_data/RS_ExomeSeq/fastq/edge_fastq/WA*fastq.gz
 
-6.5 do
+6.5. do
 
 7. Output file in /fastqc: fastqc ${file} -o fastqc/
+
 8. Closing the loop: done
+
 9. Exit editing mode: ESC, shift :, wq fastqc.sh
 
-To move files aroud: mv filename dir/ 
+* To move files aroud: mv filename dir/ 
 
 10. permision: -rw-r--r-- without x means file is not executable, then chmod u+x fastqc.sh.
 
 11. bash fastqc.sh
 
+12. Push everything and pull it bacj to your local repository.
 
+#### Now, we are going to trim.
 
+1. Using Trimmomatic.
 
+2. Download from data/scripts and save it into my scripts: cp trim_loop.sh ~/REPOSITORY/myscripts/
+
+3. Open it in vi (filename) nad edit your population name.
+
+4. bash trim_loop.sh
 
 
 ------    
-<div id='id-section6'/>   
+<div id='id-section11'/>   
 
 
-### Entry 6: 2020-01-20, Monday.   
+### Entry 6: 2020-02-03, Second Paper Dicsussion   
 
+### Info-updated
+
+### Genomic diversity - How to calculated and what it does it say?
+
+* Effective population size = population size of an ideal population that follows W-F assumptions.
+
+* Factors deviating Ne from N: 
+
+1. Non-random mating
+
+2. Selection
+
+3. Reproductive Skew 
+
+4. Non-constant population size
+
+5. Unequal sex ratio (Segwall Wright) <= Ne = (4Nm x Nf)/(Nm + Nf)
+
+6. Can be estimated by previous formulas, but there will be other variables (ex. mutations, migration, etc.) which will end up affecting Ne.
+
+7. nucleotide diversity (or pi) = 4(Ne or net probability difference in nucleotide) u (or mutation rate with units of changes per site per generation)
+
+* Nei's genetic distance - measurement of diversity
+
+* Fst (population structure) = 1/(pi + 1) (as pi increases Fst decreases, menas population is more homogenous)
+
+* or Fst = 1 - (Hs (or average H of subpop.)/Ht (or average H for whole pop.))
+
+* Heterozygozity (H): condition of having two different alleles at a locus.
+
+* Site Frequency Spectrum: distribution of the allele frequencies of a given set of loci (often SNPs) in a population or sample. 
+
+* Tajima's D: statistic that compares the average number of pairwise differences with the number of segregating sites. If = 0, in equilibrium, factors are not influencing too much. < 0 (expansion, we will have more rare alleles or more rare mutations appearing) or > 0 (contraction).  
+
+### Paper Discussion (Evolution of sociality in spiders leads to depleted genomic diversity at both population and species level)
+
+Take Home Message: How the transition to sociology can affect Ne? Non-random mating, Reproductive Skew, Unequal sex ratio.
+
+* Fst = 1 - (average pi of subpopulation/ total species pi)
+
+* lower K = more geneflow
+
+* Inbreeding coefficient: how much inbreeding is happening.
+
+* Migration push TMRCA further back in the past. 
+
+* Social = total pi = 0.00056, Ne = 21 x 10^3
+
+* Subsocial = total pi = 0.00474, Ne = 178 x 10^3
+
+* mutation rate = 6.65 x 10^-9
 
 
 ------    
-<div id='id-section7'/>   
+<div id='id-section18'/>   
 
 
-### Entry 7: 2020-01-21, Tuesday.   
+### Entry 7: 2020-02-05, Third Tutorial   
+
+[Third Tutorial](https://pespenilab.github.io/Ecological-Genomics/2020-02-05_PopGenomics_Day2.html)
+
+#### Mapping cleaned and trimmed reads against the reference genome
+
+[congenie](http://congenie.org/) to look for availability of reference genomes.
+
+* wget -> to get genomes from the internet
+
+* We are going to use a subsetted of the reference genome to include just the contigs that contain one or more probes from our exon capture experiment. 
 
 
 
