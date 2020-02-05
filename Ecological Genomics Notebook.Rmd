@@ -446,7 +446,21 @@ Take Home Message: How the transition to sociology can affect Ne? Non-random mat
 
 * We are going to use a subsetted of the reference genome to include just the contigs that contain one or more probes from our exon capture experiment. 
 
+* Average size of contigs <- 10.5 kbp.
 
+* The N50 of the reduced reference is 101,375 bp (that particular contigs + biggers give of 50%). N50 take 50% of 668 Mb, and start from the biggest contigs moving back until we get 334 MB (N50 is the smallest contigs in which the sum of all larger contigs give of 50% of our total genome).
+
+#### Wrapper
+
+* mapping - aligment to reference genome
+
+* bwa program: algorithm for mapping reads to references
+
+* bwa mem -t 1 -M ${ref} ${forward} ${reverse} > ${output}/BWA/${name}.sam
+
+* CTRL-A + Ctrl-D to let it running on the background
+
+* screen -r to recover the screen 
 
 ------    
 <div id='id-section8'/>   
