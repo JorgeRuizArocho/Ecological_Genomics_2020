@@ -22,7 +22,7 @@
 * [Entry 11: 2020-02-03, Second Paper Dicsussion](#id-section11)
 * [Entry 18: 2020-02-05, Third Tutorial](#id-section18)
 * [Entry 19: 2020-02-10, Third Paper Discussion](#id-section19)
-* [Entry 20: 2020-02-07, Friday](#id-section20)
+* [Entry 20: 2020-02-12, Fourth Tutorial Friday](#id-section20)
 * [Entry 21: 2020-02-10, Monday](#id-section21)
 * [Entry 22: 2020-02-11, Tuesday](#id-section22)
 * [Entry 23: 2020-02-12, Wednesday](#id-section23)
@@ -525,12 +525,43 @@ Ecological source of errors:
 4. Significant treshold. Competition between acuraccy and broadness. 
 
 ------    
-<div id='id-section9'/>   
+<div id='id-section20'/>   
 
+### Entry 22: 2020-02-11, Tuesday.   
 
-### Entry 9: 2020-01-23, Thursday.   
+[Tutorial](https://pespenilab.github.io/Ecological-Genomics/2020-02-12_PopGenomics_Day3.html)
 
+Codes:
 
+head WA_419.sam to see first lines of the file
+
+tail WA_419.sam to see bottom of the file
+
+[SAM FLAG DECODER](https://broadinstitute.github.io/picard/explain-flags.html): 147 (it means that the read was paired, mapped in proper pair, read reverse strand, second in pair)
+
+In this "Decoder" we are looking to avoid not primarly alignment, if it fails quality control checks, etc.
+
+Mapping quality score: higher the number, the better.
+
+samtools flagstat give us basic information about pur files
+
+*Ex: Total number of reads, number of reads paired in sequencing, etc.
+
+To get that information for all of your files: 
+
+All should have the extention: filename sorted.rmdup.bam and .bai.
+
+Mine is rmup instead or rmdup.
+
+Depth - The more reads you have, the more confidence you are going to be about the info you ae generating. Compared to reference genome.
+
+To see mapping of a single individual:
+
+samtools tview /data/project_data/RS_ExomeSeq/mapping/BWA/WA_419.sorted.rmup.bam /data/project_data/RS_ExomeSeq/ReferenceGenomes/Pabies1.0-genome_reduced.fa
+
+Genotype likelihood: prob of observing sequenced data ...
+
+Chenck in he ANGSD  with ll -rt to see if files are over there.
 
 ------    
 <div id='id-section10'/>   
@@ -630,10 +661,6 @@ Ecological source of errors:
 
 ------    
 <div id='id-section22'/>   
-
-
-### Entry 22: 2020-02-11, Tuesday.   
-
 
 
 ------    
