@@ -397,8 +397,8 @@ summary {
 <li><a href="#id-section11">Entry 11: 2020-02-03, Second Paper Dicsussion</a></li>
 <li><a href="#id-section18">Entry 18: 2020-02-05, Third Tutorial</a></li>
 <li><a href="#id-section19">Entry 19: 2020-02-10, Third Paper Discussion</a></li>
-<li><a href="#id-section20">Entry 20: 2020-02-12, Fourth Tutorial Friday</a></li>
-<li><a href="#id-section21">Entry 21: 2020-02-10, Monday</a></li>
+<li><a href="#id-section20">Entry 20: 2020-02-12, Fourth Tutorial</a></li>
+<li><a href="#id-section21">Entry 21: 2020-02-19, Fifth Tutorial</a></li>
 <li><a href="#id-section22">Entry 22: 2020-02-11, Tuesday</a></li>
 <li><a href="#id-section23">Entry 23: 2020-02-12, Wednesday</a></li>
 <li><a href="#id-section24">Entry 24: 2020-02-13, Thursday</a></li>
@@ -847,19 +847,81 @@ summary {
 </div>
 <div id="entry-22-2020-02-11-tuesday." class="section level3">
 <h3>Entry 22: 2020-02-11, Tuesday.</h3>
+<p><a href="https://pespenilab.github.io/Ecological-Genomics/2020-02-12_PopGenomics_Day3.html">Tutorial</a></p>
 <p>Codes:</p>
 <p>head WA_419.sam to see first lines of the file</p>
 <p>tail WA_419.sam to see bottom of the file</p>
 <p><a href="https://broadinstitute.github.io/picard/explain-flags.html">SAM FLAG DECODER</a>: 147 (it means that the read was paired, mapped in proper pair, read reverse strand, second in pair)</p>
 <p>In this “Decoder” we are looking to avoid not primarly alignment, if it fails quality control checks, etc.</p>
 <p>Mapping quality score: higher the number, the better.</p>
+<p>samtools flagstat give us basic information about pur files</p>
+<p>*Ex: Total number of reads, number of reads paired in sequencing, etc.</p>
+<p>To get that information for all of your files:</p>
+<p>All should have the extention: filename sorted.rmdup.bam and .bai.</p>
+<p>Mine is rmup instead or rmdup.</p>
+<p>Depth - The more reads you have, the more confidence you are going to be about the info you ae generating. Compared to reference genome.</p>
+<p>To see mapping of a single individual:</p>
+<p>samtools tview /data/project_data/RS_ExomeSeq/mapping/BWA/WA_419.sorted.rmup.bam /data/project_data/RS_ExomeSeq/ReferenceGenomes/Pabies1.0-genome_reduced.fa</p>
+<p>Genotype likelihood: prob of observing sequenced data …</p>
+<p>Chenck in he ANGSD with ll -rt to see if files are over there.</p>
 <hr />
-<div id="id-section10"></div>
+<div id="id-section21"></div>
 
 
 </div>
-<div id="entry-10-2020-01-24-friday." class="section level3">
-<h3>Entry 10: 2020-01-24, Friday.</h3>
+<div id="entry-10-2020-02-19-fifth-tutorial." class="section level3">
+<h3>Entry 10: 2020-02-19, Fifth Tutorial.</h3>
+<p><a href="https://pespenilab.github.io/Ecological-Genomics/2020-02-12_PopGenomics_Day4.html">Fifth Tutorial</a></p>
+<p>We are going to do folding to our site frequency expectrum. Folding the plot and moving all of the 2N high frequencies alleles to the beginning. This is because we don’t know with allele is pur ancestor. Folded spectra: plotting the frequencies with the minor allele frequencies.</p>
+<p>Today we are going to:</p>
+<ol style="list-style-type: decimal">
+<li><p>Estimating (rough) SFS</p></li>
+<li><p>.sfs</p></li>
+<li><p>Estimate SFS using .sfs as a prior</p></li>
+<li><p>doTheta (Parameter of population that describe diversity = 4Neu)</p></li>
+<li><p>thetha_stats</p></li>
+</ol>
+<p>R codes to generate stats: We obtained positive Tajima’s D which means that a bottleneck occured before fragmentation.</p>
+<pre><code># Setting Working Directory
+setwd(&quot;C:/Users/jorge/Desktop/F-UVM - Grad/Third Year - Second Semester - UVM/Ecological Genomics/Stats&quot;)
+
+list.files()
+
+# Updloading Data
+
+SFS &lt;- scan(&quot;WA_outFold.sfs&quot;) # Estimates of frequence of alleles.
+SFS
+
+sumSFS &lt;- sum(SFS)
+sumSFS # How meany sites did we match
+
+pctPoly &lt;-  (1-(SFS[1]/sumSFS))*100
+pctPoly
+
+plotSFS &lt;- SFS[-c(1,length(SFS))]
+barplot(plotSFS)
+
+
+list.files()
+
+div &lt;- read.table(&quot;WA_folded_allsites.thetas.idx.pestPG&quot;)
+
+colnames(div) &lt;- c(&quot;window&quot;,&quot;chrname&quot;, &quot;wincenter&quot;, &quot;tW&quot;, &quot;tP&quot;, &quot;tF&quot;, &quot;tH&quot;, &quot;tL&quot;,
+                   &quot;tajD&quot;, &quot;fulif&quot;, &quot;fuliD&quot;, &quot;fayH&quot;, &quot;zengsE&quot;, &quot;numSites&quot;)
+head(div)
+div$tWpersite &lt;- div$tW/div$numSites
+div$tPpersite &lt;- div$tP/div$numSites
+str(div)
+
+pdf(&quot;WA_diversity_stats.pdf&quot;)
+par(mfrow=c(2,2))
+hist(div$tWpersite, col=&quot;gray&quot;, xlab=&quot;Theta-W&quot;, main=&quot;&quot;)
+hist(div$tPpersite, col=&quot;gray&quot;, xlab=&quot;Theta-Pi&quot;, main=&quot;&quot;)
+hist(div$tajD, col=&quot;gray&quot;, xlab=&quot;Tajima&#39;s D&quot;, main=&quot;&quot;)
+barplot(plotSFS)
+dev.off()
+
+summary(div)</code></pre>
 <hr />
 <div id="id-section11"></div>
 
