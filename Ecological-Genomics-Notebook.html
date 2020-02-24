@@ -399,7 +399,7 @@ summary {
 <li><a href="#id-section19">Entry 19: 2020-02-10, Third Paper Discussion</a></li>
 <li><a href="#id-section20">Entry 20: 2020-02-12, Fourth Tutorial</a></li>
 <li><a href="#id-section21">Entry 21: 2020-02-19, Fifth Tutorial</a></li>
-<li><a href="#id-section22">Entry 22: 2020-02-11, Tuesday</a></li>
+<li><a href="#id-section22">Entry 22: 2020-02-11, Fourth Paper Discussion</a></li>
 <li><a href="#id-section23">Entry 23: 2020-02-12, Wednesday</a></li>
 <li><a href="#id-section24">Entry 24: 2020-02-13, Thursday</a></li>
 <li><a href="#id-section25">Entry 25: 2020-02-14, Friday</a></li>
@@ -923,12 +923,48 @@ dev.off()
 
 summary(div)</code></pre>
 <hr />
-<div id="id-section11"></div>
+<div id="id-section22"></div>
 
 
 </div>
-<div id="entry-11-2020-01-27-monday." class="section level3">
-<h3>Entry 11: 2020-01-27, Monday.</h3>
+<div id="entry-11-2020-02-24-fourth-paper-discussion." class="section level3">
+<h3>Entry 11: 2020-02-24, Fourth Paper Discussion.</h3>
+<p>Ecological Genomics: Intersection between population genetics, molecular evolution and ecology (biotic and abiotic enviroment).</p>
+<p>Example: p*q, Coalescence theory, Nucleotide diversity, Tajima’s D, SFS. Plus a ton of NGS.</p>
+<p>Trancriptomics: Measuring genes expression when you hold/control enviromental conditions constant. To reveal genetically-control diiferences phenotypes at the molecular level.</p>
+<p>What is a phenotype? * Characteristics of an organism that can be observed. (eg. coat color (morphological scale), disease resistance/susceptibility (celular and molecular level)).</p>
+<p>Central Dogma of Molecular Biology: DNA (transcription) —&gt; RNA (translation) —&gt; Protein —&gt; Phenotype</p>
+<p>Transcriptomics act on the RNA section of our Dogma.</p>
+<p>Reverse ecology: to indicate the phenotype natural selection is acting on.</p>
+<p>Examples:</p>
+<ol style="list-style-type: decimal">
+<li><p>Mutations in coding/DNA that affects AA</p></li>
+<li><p>Splice site variation</p></li>
+<li><p>Promoter and enhancers affecting expression level and timing of expression, or cell/tissue type in which the genome expressed. Also, conditions of expression</p></li>
+<li><p>Post-translational modifications (-P), at the protein level</p></li>
+<li><p>Epigenetic modifications (can affect all of the above)</p></li>
+</ol>
+<p>Transcriptomics give you an active vision of what it is hapening at a certain time. It is global/unbiased. And it is cheap (Illumina) and you can assembly a new (de novo) transcriptome.</p>
+<p>Phenotype = G + E + (G x E). You can control environemnt and/or experimentally induce phenotype of interest.</p>
+<p>Molecular underpinnings of a phenotype.</p>
+<p>Factors to consider (Take into consideration your questions and hypotheses, they will affect factors):</p>
+<ol style="list-style-type: decimal">
+<li><p>Common gardens - controlling enviromental conditions.</p></li>
+<li><p>Treatments/conditions - related to phenotype of interest.</p></li>
+<li><p>Populations</p></li>
+<li><p>Tissue, cell</p></li>
+<li><p>Life history</p></li>
+<li><p>Transgenerational environment</p></li>
+<li><p>Sex of organism and reproductive stage</p></li>
+</ol>
+<p>Work flow:</p>
+<ol style="list-style-type: decimal">
+<li><p>Careful experimental design, considering our questions, hypotheses and factors</p></li>
+<li><p>Experiment and sample tissues*individuals, save RNA - labile. Extract, prep, sequence (mRNA, 3’tag, other sequencing techniques)</p></li>
+<li><p>Process + Analyze sequence data. Quality check -&gt; Clean -&gt; Qc (Working with .fastq). Map to reference + Extract count data. Normalize the variation among your samples. Count data matrix.</p></li>
+<li><p>Integrate: GO, Network analyzes, SNP, Tajima’s D, microbiome data.</p></li>
+</ol>
+<p>Article: <a href="https://www.nature.com/articles/s41467-018-03384-9">Strong phenotypic plasticity limits potential for evolutionary responses to climate change</a></p>
 <hr />
 <div id="id-section12"></div>
 
