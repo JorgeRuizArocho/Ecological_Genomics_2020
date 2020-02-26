@@ -392,14 +392,14 @@ summary {
 <li><a href="#id-section1">Entry 1: 2020-01-13, Introductory Class</a></li>
 <li><a href="#id-section2">Entry 2: 2020-01-15, First Info Updates</a></li>
 <li><a href="#id-section3">Entry 3: 2020-01-22, Second Info Updates</a></li>
-<li><a href="#id-section9">Entry 4: 2020-01-27, Fisrt Paper Discussion</a></li>
+<li><a href="#id-section9">Entry 4: 2020-01-27, First Paper Discussion</a></li>
 <li><a href="#id-section10">Entry 5: 2020-01-29, Second Tutorial</a></li>
 <li><a href="#id-section11">Entry 11: 2020-02-03, Second Paper Dicsussion</a></li>
 <li><a href="#id-section18">Entry 18: 2020-02-05, Third Tutorial</a></li>
-<li><a href="#id-section19">Entry 19: 2020-02-06, Thursday</a></li>
-<li><a href="#id-section20">Entry 20: 2020-02-07, Friday</a></li>
-<li><a href="#id-section21">Entry 21: 2020-02-10, Monday</a></li>
-<li><a href="#id-section22">Entry 22: 2020-02-11, Tuesday</a></li>
+<li><a href="#id-section19">Entry 19: 2020-02-10, Third Paper Discussion</a></li>
+<li><a href="#id-section20">Entry 20: 2020-02-12, Fourth Tutorial</a></li>
+<li><a href="#id-section21">Entry 21: 2020-02-19, Fifth Tutorial</a></li>
+<li><a href="#id-section22">Entry 22: 2020-02-11, Fourth Paper Discussion</a></li>
 <li><a href="#id-section23">Entry 23: 2020-02-12, Wednesday</a></li>
 <li><a href="#id-section24">Entry 24: 2020-02-13, Thursday</a></li>
 <li><a href="#id-section25">Entry 25: 2020-02-14, Friday</a></li>
@@ -776,36 +776,195 @@ summary {
 <ul>
 <li><p>wget -&gt; to get genomes from the internet</p></li>
 <li><p>We are going to use a subsetted of the reference genome to include just the contigs that contain one or more probes from our exon capture experiment.</p></li>
+<li><p>Average size of contigs &lt;- 10.5 kbp.</p></li>
+<li><p>The N50 of the reduced reference is 101,375 bp (that particular contigs + biggers give of 50%). N50 take 50% of 668 Mb, and start from the biggest contigs moving back until we get 334 MB (N50 is the smallest contigs in which the sum of all larger contigs give of 50% of our total genome).</p></li>
+</ul>
+</div>
+<div id="wrapper" class="section level4">
+<h4>Wrapper</h4>
+<ul>
+<li><p>mapping - aligment to reference genome</p></li>
+<li><p>bwa program: algorithm for mapping reads to references</p></li>
+<li><p>bwa mem -t 1 -M ${ref} ${forward} ${reverse} &gt; <span class="math inline">\({output}/BWA/\)</span>{name}.sam</p></li>
+<li><p>CTRL-A + Ctrl-D to let it running on the background</p></li>
+<li><p>screen -r to recover the screen</p></li>
 </ul>
 <hr />
-<div id="id-section8"></div>
+<div id="id-section19"></div>
 
 
 </div>
 </div>
-<div id="entry-8-2020-01-22-wednesday." class="section level3">
-<h3>Entry 8: 2020-01-22, Wednesday.</h3>
+<div id="entry-8-2020-02-10-third-paper-discussion." class="section level3">
+<h3>Entry 8: 2020-02-10, Third Paper Discussion.</h3>
+</div>
+<div id="info-updated-1" class="section level3">
+<h3>Info-updated</h3>
+</div>
+<div id="gwas-genome-wide-association-studies-wgwas-whole" class="section level3">
+<h3>GWAs (Genome Wide Association Studies)/ WGWAs (Whole)</h3>
+<ul>
+<li><p>Genotype to phenotype retrospective studies.</p></li>
+<li><p>2002 First WGWAs analysis performed : Microbial insfrection.</p></li>
+<li><p>3000 studies has been don’t up to the year 2017.</p></li>
+<li><p>In medical studies: rare variants mapped to SNPs in the genome (Ex. diabetes, parkinson, etc.).</p></li>
+<li><p>Which SNPs are the most responsible to cause the genetic deseases. (With case control, simple comparison to see what genetic variants have the effect).</p></li>
+<li><p>Manhattan plot: SNPs are plot across the whole genome and we can statistically see which one show significant differences.</p></li>
+<li><p>Methodology for classic GWAs:</p></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Making/finding population that differ in a singular trait</p></li>
+<li><p>Using MAseq to generate data of genomic variance</p></li>
+<li><p>Making statistical inferences</p></li>
+</ol>
+<p>We end up finding:</p>
+<ol style="list-style-type: decimal">
+<li><p>Causal impact of the genetic variance: great.</p></li>
+<li><p>Close to causal to genetic variance: good.</p></li>
+<li><p>bias -&gt; population bias: horrible.</p></li>
+</ol>
+<p>Problems with GWAs:</p>
+<ol style="list-style-type: decimal">
+<li><p>SNPs are not genes.</p></li>
+<li><p>Low heritability of traits - distinctions can become unclear.</p></li>
+<li><p>Ancestral association - problems in populations with smaller population sizes due to violation of WF assumptions. There is less recombination. We address this issue by fitting the data (to look for cofounding variables and taking out the variability created by the variable we are not looking into).</p></li>
+</ol>
+<p>QQplots:</p>
+<ol style="list-style-type: decimal">
+<li><p>lambda: median empirically observed variation/median expected vaiation = 1 (good)</p></li>
+<li><p>If lambda is bigger than 1, ecologist devide their lambda to the expected lambda and that decrease variability of the data.</p></li>
+</ol>
+<p>Ecological source of errors:</p>
+<ol style="list-style-type: decimal">
+<li><p>Different methodology from human analysis.</p></li>
+<li><p>Correlated traits: joint GWAs analyses. (PCA (represents genome wide ancestor) and genome control).</p></li>
+<li><p>Trait-structure extrapolation. Causal association between SNPs and phenotypic traits, is difficult to study when effecive size and allele frequency are very high.</p></li>
+<li><p>Significant treshold. Competition between acuraccy and broadness.</p></li>
+</ol>
 <hr />
-<div id="id-section9"></div>
-
+<div id="id-section20"></div>
 
 </div>
-<div id="entry-9-2020-01-23-thursday." class="section level3">
-<h3>Entry 9: 2020-01-23, Thursday.</h3>
+<div id="entry-22-2020-02-11-tuesday." class="section level3">
+<h3>Entry 22: 2020-02-11, Tuesday.</h3>
+<p><a href="https://pespenilab.github.io/Ecological-Genomics/2020-02-12_PopGenomics_Day3.html">Tutorial</a></p>
+<p>Codes:</p>
+<p>head WA_419.sam to see first lines of the file</p>
+<p>tail WA_419.sam to see bottom of the file</p>
+<p><a href="https://broadinstitute.github.io/picard/explain-flags.html">SAM FLAG DECODER</a>: 147 (it means that the read was paired, mapped in proper pair, read reverse strand, second in pair)</p>
+<p>In this “Decoder” we are looking to avoid not primarly alignment, if it fails quality control checks, etc.</p>
+<p>Mapping quality score: higher the number, the better.</p>
+<p>samtools flagstat give us basic information about pur files</p>
+<p>*Ex: Total number of reads, number of reads paired in sequencing, etc.</p>
+<p>To get that information for all of your files:</p>
+<p>All should have the extention: filename sorted.rmdup.bam and .bai.</p>
+<p>Mine is rmup instead or rmdup.</p>
+<p>Depth - The more reads you have, the more confidence you are going to be about the info you ae generating. Compared to reference genome.</p>
+<p>To see mapping of a single individual:</p>
+<p>samtools tview /data/project_data/RS_ExomeSeq/mapping/BWA/WA_419.sorted.rmup.bam /data/project_data/RS_ExomeSeq/ReferenceGenomes/Pabies1.0-genome_reduced.fa</p>
+<p>Genotype likelihood: prob of observing sequenced data …</p>
+<p>Chenck in he ANGSD with ll -rt to see if files are over there.</p>
 <hr />
-<div id="id-section10"></div>
+<div id="id-section21"></div>
 
 
 </div>
-<div id="entry-10-2020-01-24-friday." class="section level3">
-<h3>Entry 10: 2020-01-24, Friday.</h3>
+<div id="entry-10-2020-02-19-fifth-tutorial." class="section level3">
+<h3>Entry 10: 2020-02-19, Fifth Tutorial.</h3>
+<p><a href="https://pespenilab.github.io/Ecological-Genomics/2020-02-12_PopGenomics_Day4.html">Fifth Tutorial</a></p>
+<p>We are going to do folding to our site frequency expectrum. Folding the plot and moving all of the 2N high frequencies alleles to the beginning. This is because we don’t know with allele is pur ancestor. Folded spectra: plotting the frequencies with the minor allele frequencies.</p>
+<p>Today we are going to:</p>
+<ol style="list-style-type: decimal">
+<li><p>Estimating (rough) SFS</p></li>
+<li><p>.sfs</p></li>
+<li><p>Estimate SFS using .sfs as a prior</p></li>
+<li><p>doTheta (Parameter of population that describe diversity = 4Neu)</p></li>
+<li><p>thetha_stats</p></li>
+</ol>
+<p>R codes to generate stats: We obtained positive Tajima’s D which means that a bottleneck occured before fragmentation.</p>
+<pre><code># Setting Working Directory
+setwd(&quot;C:/Users/jorge/Desktop/F-UVM - Grad/Third Year - Second Semester - UVM/Ecological Genomics/Stats&quot;)
+
+list.files()
+
+# Updloading Data
+
+SFS &lt;- scan(&quot;WA_outFold.sfs&quot;) # Estimates of frequence of alleles.
+SFS
+
+sumSFS &lt;- sum(SFS)
+sumSFS # How meany sites did we match
+
+pctPoly &lt;-  (1-(SFS[1]/sumSFS))*100
+pctPoly
+
+plotSFS &lt;- SFS[-c(1,length(SFS))]
+barplot(plotSFS)
+
+
+list.files()
+
+div &lt;- read.table(&quot;WA_folded_allsites.thetas.idx.pestPG&quot;)
+
+colnames(div) &lt;- c(&quot;window&quot;,&quot;chrname&quot;, &quot;wincenter&quot;, &quot;tW&quot;, &quot;tP&quot;, &quot;tF&quot;, &quot;tH&quot;, &quot;tL&quot;,
+                   &quot;tajD&quot;, &quot;fulif&quot;, &quot;fuliD&quot;, &quot;fayH&quot;, &quot;zengsE&quot;, &quot;numSites&quot;)
+head(div)
+div$tWpersite &lt;- div$tW/div$numSites
+div$tPpersite &lt;- div$tP/div$numSites
+str(div)
+
+pdf(&quot;WA_diversity_stats.pdf&quot;)
+par(mfrow=c(2,2))
+hist(div$tWpersite, col=&quot;gray&quot;, xlab=&quot;Theta-W&quot;, main=&quot;&quot;)
+hist(div$tPpersite, col=&quot;gray&quot;, xlab=&quot;Theta-Pi&quot;, main=&quot;&quot;)
+hist(div$tajD, col=&quot;gray&quot;, xlab=&quot;Tajima&#39;s D&quot;, main=&quot;&quot;)
+barplot(plotSFS)
+dev.off()
+
+summary(div)</code></pre>
 <hr />
-<div id="id-section11"></div>
+<div id="id-section22"></div>
 
 
 </div>
-<div id="entry-11-2020-01-27-monday." class="section level3">
-<h3>Entry 11: 2020-01-27, Monday.</h3>
+<div id="entry-11-2020-02-24-fourth-paper-discussion." class="section level3">
+<h3>Entry 11: 2020-02-24, Fourth Paper Discussion.</h3>
+<p>Ecological Genomics: Intersection between population genetics, molecular evolution and ecology (biotic and abiotic enviroment).</p>
+<p>Example: p*q, Coalescence theory, Nucleotide diversity, Tajima’s D, SFS. Plus a ton of NGS.</p>
+<p>Trancriptomics: Measuring genes expression when you hold/control enviromental conditions constant. To reveal genetically-control diiferences phenotypes at the molecular level.</p>
+<p>What is a phenotype? * Characteristics of an organism that can be observed. (eg. coat color (morphological scale), disease resistance/susceptibility (celular and molecular level)).</p>
+<p>Central Dogma of Molecular Biology: DNA (transcription) —&gt; RNA (translation) —&gt; Protein —&gt; Phenotype</p>
+<p>Transcriptomics act on the RNA section of our Dogma.</p>
+<p>Reverse ecology: to indicate the phenotype natural selection is acting on.</p>
+<p>Examples:</p>
+<ol style="list-style-type: decimal">
+<li><p>Mutations in coding/DNA that affects AA</p></li>
+<li><p>Splice site variation</p></li>
+<li><p>Promoter and enhancers affecting expression level and timing of expression, or cell/tissue type in which the genome expressed. Also, conditions of expression</p></li>
+<li><p>Post-translational modifications (-P), at the protein level</p></li>
+<li><p>Epigenetic modifications (can affect all of the above)</p></li>
+</ol>
+<p>Transcriptomics give you an active vision of what it is hapening at a certain time. It is global/unbiased. And it is cheap (Illumina) and you can assembly a new (de novo) transcriptome.</p>
+<p>Phenotype = G + E + (G x E). You can control environemnt and/or experimentally induce phenotype of interest.</p>
+<p>Molecular underpinnings of a phenotype.</p>
+<p>Factors to consider (Take into consideration your questions and hypotheses, they will affect factors):</p>
+<ol style="list-style-type: decimal">
+<li><p>Common gardens - controlling enviromental conditions.</p></li>
+<li><p>Treatments/conditions - related to phenotype of interest.</p></li>
+<li><p>Populations</p></li>
+<li><p>Tissue, cell</p></li>
+<li><p>Life history</p></li>
+<li><p>Transgenerational environment</p></li>
+<li><p>Sex of organism and reproductive stage</p></li>
+</ol>
+<p>Work flow:</p>
+<ol style="list-style-type: decimal">
+<li><p>Careful experimental design, considering our questions, hypotheses and factors</p></li>
+<li><p>Experiment and sample tissues*individuals, save RNA - labile. Extract, prep, sequence (mRNA, 3’tag, other sequencing techniques)</p></li>
+<li><p>Process + Analyze sequence data. Quality check -&gt; Clean -&gt; Qc (Working with .fastq). Map to reference + Extract count data. Normalize the variation among your samples. Count data matrix.</p></li>
+<li><p>Integrate: GO, Network analyzes, SNP, Tajima’s D, microbiome data.</p></li>
+</ol>
+<p>Article: <a href="https://www.nature.com/articles/s41467-018-03384-9">Strong phenotypic plasticity limits potential for evolutionary responses to climate change</a></p>
 <hr />
 <div id="id-section12"></div>
 
@@ -880,9 +1039,6 @@ summary {
 <div id="id-section22"></div>
 
 
-</div>
-<div id="entry-22-2020-02-11-tuesday." class="section level3">
-<h3>Entry 22: 2020-02-11, Tuesday.</h3>
 <hr />
 <div id="id-section23"></div>
 

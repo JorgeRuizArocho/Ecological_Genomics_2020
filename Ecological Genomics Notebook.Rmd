@@ -17,14 +17,14 @@
 * [Entry 1: 2020-01-13, Introductory Class](#id-section1)
 * [Entry 2: 2020-01-15, First Info Updates](#id-section2)
 * [Entry 3: 2020-01-22, Second Info Updates](#id-section3)
-* [Entry 4: 2020-01-27, Fisrt Paper Discussion](#id-section9)
+* [Entry 4: 2020-01-27, First Paper Discussion](#id-section9)
 * [Entry 5: 2020-01-29, Second Tutorial](#id-section10)
 * [Entry 11: 2020-02-03, Second Paper Dicsussion](#id-section11)
 * [Entry 18: 2020-02-05, Third Tutorial](#id-section18)
-* [Entry 19: 2020-02-06, Thursday](#id-section19)
-* [Entry 20: 2020-02-07, Friday](#id-section20)
-* [Entry 21: 2020-02-10, Monday](#id-section21)
-* [Entry 22: 2020-02-11, Tuesday](#id-section22)
+* [Entry 19: 2020-02-10, Third Paper Discussion](#id-section19)
+* [Entry 20: 2020-02-12, Fourth Tutorial](#id-section20)
+* [Entry 21: 2020-02-19, Fifth Tutorial](#id-section21)
+* [Entry 22: 2020-02-11, Fourth Paper Discussion](#id-section22)
 * [Entry 23: 2020-02-12, Wednesday](#id-section23)
 * [Entry 24: 2020-02-13, Thursday](#id-section24)
 * [Entry 25: 2020-02-14, Friday](#id-section25)
@@ -446,38 +446,257 @@ Take Home Message: How the transition to sociology can affect Ne? Non-random mat
 
 * We are going to use a subsetted of the reference genome to include just the contigs that contain one or more probes from our exon capture experiment. 
 
+* Average size of contigs <- 10.5 kbp.
 
+* The N50 of the reduced reference is 101,375 bp (that particular contigs + biggers give of 50%). N50 take 50% of 668 Mb, and start from the biggest contigs moving back until we get 334 MB (N50 is the smallest contigs in which the sum of all larger contigs give of 50% of our total genome).
 
-------    
-<div id='id-section8'/>   
+#### Wrapper
 
+* mapping - aligment to reference genome
 
-### Entry 8: 2020-01-22, Wednesday.   
+* bwa program: algorithm for mapping reads to references
 
+* bwa mem -t 1 -M ${ref} ${forward} ${reverse} > ${output}/BWA/${name}.sam
 
+* CTRL-A + Ctrl-D to let it running on the background
 
-------    
-<div id='id-section9'/>   
-
-
-### Entry 9: 2020-01-23, Thursday.   
-
-
+* screen -r to recover the screen 
 
 ------    
-<div id='id-section10'/>   
+<div id='id-section19'/>   
 
 
-### Entry 10: 2020-01-24, Friday.   
+### Entry 8: 2020-02-10, Third Paper Discussion.   
 
+### Info-updated
 
+### GWAs (Genome Wide Association Studies)/ WGWAs (Whole)
+
+* Genotype to phenotype retrospective studies.
+
+* 2002 First WGWAs analysis performed : Microbial insfrection. 
+
+* 3000 studies has been don't up to the year 2017.
+
+* In medical studies: rare variants mapped to SNPs in the genome (Ex. diabetes, parkinson, etc.).
+
+* Which SNPs are the most responsible to cause the genetic deseases. (With case control, simple comparison to see what genetic variants have the effect).
+
+* Manhattan plot: SNPs are plot across the whole genome and we can statistically see which one show significant differences.
+
+* Methodology for classic GWAs:
+
+1. Making/finding population that differ in a singular trait
+
+2. Using MAseq to generate data of genomic variance
+
+3. Making statistical inferences
+
+We end up finding:
+
+1. Causal impact of the genetic variance: great.
+
+2. Close to causal to genetic variance: good.
+
+3. bias -> population bias: horrible. 
+
+Problems with GWAs:
+
+1. SNPs are not genes.
+
+2. Low heritability of traits - distinctions can become unclear.
+
+3. Ancestral association - problems in populations with smaller population sizes due to violation of WF assumptions. There is less recombination. We address this issue by fitting the data (to look for cofounding variables and taking out the variability created by the variable we are not looking into).
+
+QQplots:
+
+1. lambda: median empirically observed variation/median expected vaiation = 1 (good)
+
+2. If lambda is bigger than 1, ecologist devide their lambda to the expected lambda and that decrease variability of the data.
+
+Ecological source of errors:
+
+1. Different methodology from human analysis.
+
+2. Correlated traits: joint GWAs analyses. (PCA (represents genome wide ancestor) and genome control).
+
+3. Trait-structure extrapolation. Causal association between SNPs and phenotypic traits, is difficult to study when effecive size and allele frequency are very high.
+
+4. Significant treshold. Competition between acuraccy and broadness. 
 
 ------    
-<div id='id-section11'/>   
+<div id='id-section20'/>   
+
+### Entry 22: 2020-02-11, Tuesday.   
+
+[Tutorial](https://pespenilab.github.io/Ecological-Genomics/2020-02-12_PopGenomics_Day3.html)
+
+Codes:
+
+head WA_419.sam to see first lines of the file
+
+tail WA_419.sam to see bottom of the file
+
+[SAM FLAG DECODER](https://broadinstitute.github.io/picard/explain-flags.html): 147 (it means that the read was paired, mapped in proper pair, read reverse strand, second in pair)
+
+In this "Decoder" we are looking to avoid not primarly alignment, if it fails quality control checks, etc.
+
+Mapping quality score: higher the number, the better.
+
+samtools flagstat give us basic information about pur files
+
+*Ex: Total number of reads, number of reads paired in sequencing, etc.
+
+To get that information for all of your files: 
+
+All should have the extention: filename sorted.rmdup.bam and .bai.
+
+Mine is rmup instead or rmdup.
+
+Depth - The more reads you have, the more confidence you are going to be about the info you ae generating. Compared to reference genome.
+
+To see mapping of a single individual:
+
+samtools tview /data/project_data/RS_ExomeSeq/mapping/BWA/WA_419.sorted.rmup.bam /data/project_data/RS_ExomeSeq/ReferenceGenomes/Pabies1.0-genome_reduced.fa
+
+Genotype likelihood: prob of observing sequenced data ...
+
+Chenck in he ANGSD  with ll -rt to see if files are over there.
+
+------    
+<div id='id-section21'/>   
 
 
-### Entry 11: 2020-01-27, Monday.   
+### Entry 10: 2020-02-19, Fifth Tutorial.   
 
+[Fifth Tutorial](https://pespenilab.github.io/Ecological-Genomics/2020-02-12_PopGenomics_Day4.html)
+
+We are going to do folding to our site frequency expectrum. Folding the plot and moving all of the 2N high frequencies alleles to the beginning. This is because we don't know with allele is pur ancestor. 
+Folded spectra: plotting the frequencies with the minor allele frequencies. 
+
+Today we are going to:
+
+1. Estimating (rough) SFS
+
+2. .sfs
+
+3. Estimate SFS using .sfs as a prior
+
+4. doTheta (Parameter of population that describe diversity = 4Neu)
+
+5. thetha_stats
+
+R codes to generate stats: We obtained positive Tajima's D which means that a bottleneck occured before fragmentation.
+
+```
+# Setting Working Directory
+setwd("C:/Users/jorge/Desktop/F-UVM - Grad/Third Year - Second Semester - UVM/Ecological Genomics/Stats")
+
+list.files()
+
+# Updloading Data
+
+SFS <- scan("WA_outFold.sfs") # Estimates of frequence of alleles.
+SFS
+
+sumSFS <- sum(SFS)
+sumSFS # How meany sites did we match
+
+pctPoly <-  (1-(SFS[1]/sumSFS))*100
+pctPoly
+
+plotSFS <- SFS[-c(1,length(SFS))]
+barplot(plotSFS)
+
+
+list.files()
+
+div <- read.table("WA_folded_allsites.thetas.idx.pestPG")
+
+colnames(div) <- c("window","chrname", "wincenter", "tW", "tP", "tF", "tH", "tL",
+                   "tajD", "fulif", "fuliD", "fayH", "zengsE", "numSites")
+head(div)
+div$tWpersite <- div$tW/div$numSites
+div$tPpersite <- div$tP/div$numSites
+str(div)
+
+pdf("WA_diversity_stats.pdf")
+par(mfrow=c(2,2))
+hist(div$tWpersite, col="gray", xlab="Theta-W", main="")
+hist(div$tPpersite, col="gray", xlab="Theta-Pi", main="")
+hist(div$tajD, col="gray", xlab="Tajima's D", main="")
+barplot(plotSFS)
+dev.off()
+
+summary(div)
+```
+
+------    
+<div id='id-section22'/>   
+
+
+### Entry 11: 2020-02-24, Fourth Paper Discussion.
+
+Ecological Genomics: Intersection between population genetics, molecular evolution and ecology (biotic and abiotic enviroment).
+
+Example: p*q, Coalescence theory, Nucleotide diversity, Tajima's D, SFS. Plus a ton of NGS.
+
+Trancriptomics: Measuring genes expression when you hold/control enviromental conditions constant. To reveal genetically-control diiferences phenotypes at the molecular level. 
+
+What is a phenotype? 
+* Characteristics of an organism that can be observed. (eg. coat color (morphological scale), disease resistance/susceptibility (celular and molecular level)).
+
+Central Dogma of Molecular Biology: DNA (transcription) ---> RNA (translation) ---> Protein ---> Phenotype
+
+Transcriptomics act on the RNA section of our Dogma. 
+
+Reverse ecology: to indicate the phenotype natural selection is acting on.
+
+Examples: 
+
+1. Mutations in coding/DNA that affects AA
+
+2. Splice site variation
+
+3. Promoter and enhancers affecting expression level and timing of expression, or cell/tissue type in which the genome expressed. Also, conditions of expression
+
+4. Post-translational modifications (-P), at the protein level
+
+5. Epigenetic modifications (can affect all of the above)
+
+Transcriptomics give you an active vision of what it is hapening at a certain time. It is global/unbiased. And it is cheap (Illumina) and you can assembly a new (de novo) transcriptome.
+
+Phenotype = G + E + (G x E). You can control environemnt and/or experimentally induce phenotype of interest. 
+
+Molecular underpinnings of a phenotype. 
+
+Factors to consider (Take into consideration your questions and hypotheses, they will affect factors): 
+
+1. Common gardens - controlling enviromental conditions. 
+
+2. Treatments/conditions - related to phenotype of interest. 
+
+3. Populations
+
+4. Tissue, cell
+
+5. Life history
+
+6. Transgenerational environment
+
+7. Sex of organism and reproductive stage
+
+Work flow:
+
+1. Careful experimental design, considering our questions, hypotheses and factors
+
+2. Experiment and sample tissues*individuals, save RNA - labile. Extract, prep, sequence (mRNA, 3'tag, other sequencing techniques)
+
+3. Process + Analyze sequence data. Quality check -> Clean -> Qc (Working with .fastq). Map to reference + Extract count data. Normalize the variation among your samples. Count data matrix. 
+
+4. Integrate: GO, Network analyzes, SNP, Tajima's D, microbiome data. 
+
+Article: [Strong phenotypic plasticity limits potential for evolutionary responses to climate change](https://www.nature.com/articles/s41467-018-03384-9)
 
 
 ------    
@@ -562,10 +781,6 @@ Take Home Message: How the transition to sociology can affect Ne? Non-random mat
 
 ------    
 <div id='id-section22'/>   
-
-
-### Entry 22: 2020-02-11, Tuesday.   
-
 
 
 ------    
