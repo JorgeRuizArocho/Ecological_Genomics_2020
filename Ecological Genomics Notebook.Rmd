@@ -715,7 +715,7 @@ Factors:
 
 1. Treatment: C, H, D
 
-2. Source Climate: 2, Hot Dry and Coolwet
+2. Source Climate: 2, HotDry and CoolWet
 
 3. Time: 0, 5, 10
 
@@ -725,8 +725,9 @@ Factors:
 
 * at different time points? ex ~ time + source climate + (time*SC) + family 
 
-* 
+* interactions ex ~ SC +trt + (SC*trt)
 
+#### My sample will be: KAN D and KAN H 
 
 
 
