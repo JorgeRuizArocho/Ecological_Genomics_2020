@@ -25,7 +25,7 @@
 * [Entry 20: 2020-02-12, Fourth Tutorial](#id-section20)
 * [Entry 21: 2020-02-19, Fifth Tutorial](#id-section21)
 * [Entry 22: 2020-02-11, Fourth Paper Discussion](#id-section22)
-* [Entry 23: 2020-02-12, Wednesday](#id-section23)
+* [Entry 23: 2020-02-26, Transcriptomics Day One](#id-section23)
 * [Entry 24: 2020-02-13, Thursday](#id-section24)
 * [Entry 25: 2020-02-14, Friday](#id-section25)
 * [Entry 26: 2020-02-17, Monday](#id-section26)
@@ -700,10 +700,37 @@ Article: [Strong phenotypic plasticity limits potential for evolutionary respons
 
 
 ------    
-<div id='id-section12'/>   
+<div id='id-section23'/>   
 
 
-### Entry 12: 2020-01-28, Tuesday.   
+### Entry 12: 2020-02-26, Transcriptomics First Session.   
+[Tutorial](https://pespenilab.github.io/Ecological-Genomics/2020-02-26_RNA-seq_Day1.html)
+
+Goal: To assess the gene expression responses of Red spruce individuals from these habitats in response to experimental treatments of heat and heat+drought.
+
+With the library prep and sequencing used, little RNA with good quality is enough to work. 
+
+Possible questions to ask with this data set:
+Factors:
+
+1. Treatment: C, H, D
+
+2. Source Climate: 2, Hot Dry and Coolwet
+
+3. Time: 0, 5, 10
+
+1) Do individuals from different climate sources have different gene expression:
+
+* in each condition? ex ~ SC + trt
+
+* at different time points? ex ~ time + source climate + (time*SC) + family 
+
+* 
+
+
+
+
+
 
 
 
