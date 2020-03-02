@@ -26,7 +26,7 @@
 * [Entry 21: 2020-02-19, Fifth Tutorial](#id-section21)
 * [Entry 22: 2020-02-11, Fourth Paper Discussion](#id-section22)
 * [Entry 23: 2020-02-26, Transcriptomics Day One](#id-section23)
-* [Entry 24: 2020-02-13, Thursday](#id-section24)
+* [Entry 24: 2020-02-13, Fifth Paper Discussion](#id-section24)
 * [Entry 25: 2020-02-14, Friday](#id-section25)
 * [Entry 26: 2020-02-17, Monday](#id-section26)
 * [Entry 27: 2020-02-18, Tuesday](#id-section27)
@@ -730,12 +730,89 @@ Factors:
 #### My sample will be: KAN D and KAN H 
 
 ------    
-<div id='id-section13'/>   
+<div id='id-section24'/>   
 
 
-### Entry 13: 2020-01-29, Wednesday.   
+### Entry 13: 2020-03-02, Fifth Paper Discussion.   
 
+Info-Update: 
 
+Differential Gene Expression: Difference in transcript abundance between experimental groups or populations. We are looking at specific genes that are changing (more than you will expect by chance). 
+
+Useful in studyng how genotype influence phenotypes. We can conduct experiment to see P = E x G x (GxE), control for environmental conditions. 
+
+How to conduct an experiment? 
+
+1. Sample Prep
+
+2. RNA extraction
+
+3. Library Preparation
+
+4. Sequencing 
+
+5. Bionformatic (Quality control (FastQC and trimming), Mapping and counting (Salmon))
+
+Normalization Section:
+
+We have a data matrix/gene count table. We would have gene number in each row and samples in each columns. The data will be in "counts". Normalization address two problems: 
+
+1. Depth: Library size.
+
+2. Library composition: Some genes can take a lot of the depth and you have to normalize. 
+
+Normalization Methods: 
+
+1. Counts per million (CPM) - sequencing depth. 
+
+2. Transcripts per kilobase million. (Depth and gene length)
+
+3. Fragments per kilobase million. (Depth and gene length)
+
+4. edge R - depth, gene size and library composition. 
+
+5. DESeq2 - depth composition. Provides and sclling factor to divide each gene by it.
+
+Differential Expression: 
+
+20,000 x 0.05 (p-val) = 1,000 false positive.
+
+Independent Filtering: limiting the number of test based on a cut off, baseMean. 
+
+Benjamini Hochberg (BH): Adjusted p-value to control false positives. FDR - False discovery rate.
+
+Generalized Linear Model (GLM): Neative binomial distribution. Wald test: p-value.
+
+Statistical Models. Ex: exp~time + source climate + (SC X time), we are asking how well do these variables predict expression level.
+
+Visualization:
+
+Sequencing Summary Statistics. Ex: Total read counts by sample, or Number of null genes by sample. Or heat map, how much each gene in each sample is changing relative to the control. 
+
+Enrichment Analysis: 
+
+Functional database:
+
+1. Gene Ontology (GO)
+
+* Molecular Function: adenylate cclase activiting
+
+* Biological Process: puridimine.
+
+* Cell Compartment: cibosome.
+
+2. KEGG pathway
+
+*Gentic Info Proc (ex. tanscription)
+
+Methods: Over Representation Analysis. 
+
+Gene Set Enrichment Analysis (rank based methods). 
+
+Article: [Insights into high-pressure acclimation:
+comparative transcriptome analysis of sea
+cucumber Apostichopus japonicus at
+different hydrostatic pressure exposures](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-6480-9)
 
 ------    
 <div id='id-section14'/>   

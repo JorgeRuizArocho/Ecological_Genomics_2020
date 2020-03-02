@@ -400,8 +400,8 @@ summary {
 <li><a href="#id-section20">Entry 20: 2020-02-12, Fourth Tutorial</a></li>
 <li><a href="#id-section21">Entry 21: 2020-02-19, Fifth Tutorial</a></li>
 <li><a href="#id-section22">Entry 22: 2020-02-11, Fourth Paper Discussion</a></li>
-<li><a href="#id-section23">Entry 23: 2020-02-12, Wednesday</a></li>
-<li><a href="#id-section24">Entry 24: 2020-02-13, Thursday</a></li>
+<li><a href="#id-section23">Entry 23: 2020-02-26, Transcriptomics Day One</a></li>
+<li><a href="#id-section24">Entry 24: 2020-02-13, Fifth Paper Discussion</a></li>
 <li><a href="#id-section25">Entry 25: 2020-02-14, Friday</a></li>
 <li><a href="#id-section26">Entry 26: 2020-02-17, Monday</a></li>
 <li><a href="#id-section27">Entry 27: 2020-02-18, Tuesday</a></li>
@@ -966,19 +966,89 @@ summary(div)</code></pre>
 </ol>
 <p>Article: <a href="https://www.nature.com/articles/s41467-018-03384-9">Strong phenotypic plasticity limits potential for evolutionary responses to climate change</a></p>
 <hr />
-<div id="id-section12"></div>
+<div id="id-section23"></div>
 
 
 </div>
-<div id="entry-12-2020-01-28-tuesday." class="section level3">
-<h3>Entry 12: 2020-01-28, Tuesday.</h3>
+<div id="entry-12-2020-02-26-transcriptomics-first-session." class="section level3">
+<h3>Entry 12: 2020-02-26, Transcriptomics First Session.</h3>
+<p><a href="https://pespenilab.github.io/Ecological-Genomics/2020-02-26_RNA-seq_Day1.html">Tutorial</a></p>
+<p>Goal: To assess the gene expression responses of Red spruce individuals from these habitats in response to experimental treatments of heat and heat+drought.</p>
+<p>With the library prep and sequencing used, little RNA with good quality is enough to work.</p>
+<p>Possible questions to ask with this data set: Factors:</p>
+<ol style="list-style-type: decimal">
+<li><p>Treatment: C, H, D</p></li>
+<li><p>Source Climate: 2, HotDry and CoolWet</p></li>
+<li><p>Time: 0, 5, 10</p></li>
+</ol>
+<ol style="list-style-type: decimal">
+<li>Do individuals from different climate sources have different gene expression:</li>
+</ol>
+<ul>
+<li><p>in each condition? ex ~ SC + trt</p></li>
+<li><p>at different time points? ex ~ time + source climate + (time*SC) + family</p></li>
+<li><p>interactions ex ~ SC +trt + (SC*trt)</p></li>
+</ul>
+<div id="my-sample-will-be-kan-d-and-kan-h" class="section level4">
+<h4>My sample will be: KAN D and KAN H</h4>
 <hr />
-<div id="id-section13"></div>
+<div id="id-section24"></div>
 
 
 </div>
-<div id="entry-13-2020-01-29-wednesday." class="section level3">
-<h3>Entry 13: 2020-01-29, Wednesday.</h3>
+</div>
+<div id="entry-13-2020-03-02-fifth-paper-discussion." class="section level3">
+<h3>Entry 13: 2020-03-02, Fifth Paper Discussion.</h3>
+<p>Info-Update:</p>
+<p>Differential Gene Expression: Difference in transcript abundance between experimental groups or populations. We are looking at specific genes that are changing (more than you will expect by chance).</p>
+<p>Useful in studyng how genotype influence phenotypes. We can conduct experiment to see P = E x G x (GxE), control for environmental conditions.</p>
+<p>How to conduct an experiment?</p>
+<ol style="list-style-type: decimal">
+<li><p>Sample Prep</p></li>
+<li><p>RNA extraction</p></li>
+<li><p>Library Preparation</p></li>
+<li><p>Sequencing</p></li>
+<li><p>Bionformatic (Quality control (FastQC and trimming), Mapping and counting (Salmon))</p></li>
+</ol>
+<p>Normalization Section:</p>
+<p>We have a data matrix/gene count table. We would have gene number in each row and samples in each columns. The data will be in “counts”. Normalization address two problems:</p>
+<ol style="list-style-type: decimal">
+<li><p>Depth: Library size.</p></li>
+<li><p>Library composition: Some genes can take a lot of the depth and you have to normalize.</p></li>
+</ol>
+<p>Normalization Methods:</p>
+<ol style="list-style-type: decimal">
+<li><p>Counts per million (CPM) - sequencing depth.</p></li>
+<li><p>Transcripts per kilobase million. (Depth and gene length)</p></li>
+<li><p>Fragments per kilobase million. (Depth and gene length)</p></li>
+<li><p>edge R - depth, gene size and library composition.</p></li>
+<li><p>DESeq2 - depth composition. Provides and sclling factor to divide each gene by it.</p></li>
+</ol>
+<p>Differential Expression:</p>
+<p>20,000 x 0.05 (p-val) = 1,000 false positive.</p>
+<p>Independent Filtering: limiting the number of test based on a cut off, baseMean.</p>
+<p>Benjamini Hochberg (BH): Adjusted p-value to control false positives. FDR - False discovery rate.</p>
+<p>Generalized Linear Model (GLM): Neative binomial distribution. Wald test: p-value.</p>
+<p>Statistical Models. Ex: exp~time + source climate + (SC X time), we are asking how well do these variables predict expression level.</p>
+<p>Visualization:</p>
+<p>Sequencing Summary Statistics. Ex: Total read counts by sample, or Number of null genes by sample. Or heat map, how much ieach gene in each sample is changing relative to the control.</p>
+<p>Enrichment Analysis:</p>
+<p>Functional database:</p>
+<ol style="list-style-type: decimal">
+<li>Gene Ontology (GO)</li>
+</ol>
+<ul>
+<li><p>Molecular Function: adenylate cclase activiting</p></li>
+<li><p>Biological Process: puridimine.</p></li>
+<li><p>Cell Compartment: cibosome.</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>KEGG pathway</li>
+</ol>
+<p>*Gentic Info Proc (ex. tanscription)</p>
+<p>Methods: Over Representation Analysis.</p>
+<p>Gene Set Enrichment Analysis (rank based methods).</p>
+<p>Article: <a href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-6480-9">Insights into high-pressure acclimation: comparative transcriptome analysis of sea cucumber Apostichopus japonicus at different hydrostatic pressure exposures</a></p>
 <hr />
 <div id="id-section14"></div>
 
