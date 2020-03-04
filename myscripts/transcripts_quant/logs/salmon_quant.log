@@ -1,0 +1,5 @@
+[2020-03-04 09:46:22.365] [jointLog] [info] Fragment incompatibility prior below threshold.  Incompatible fragments will be ignored.
+[2020-03-04 09:46:22.365] [jointLog] [info] Usage of --validateMappings implies use of minScoreFraction. Since not explicitly specified, it is being set to 0.65
+[2020-03-04 09:46:22.365] [jointLog] [info] Usage of --validateMappings implies a default consensus slack of 0.2. Setting consensusSlack to 0.35.
+[2020-03-04 09:46:22.365] [jointLog] [info] parsing read library format
+[2020-03-04 09:46:22.365] [jointLog] [info] There is 1 library.
