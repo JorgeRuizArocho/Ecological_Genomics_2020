@@ -26,8 +26,8 @@
 * [Entry 21: 2020-02-19, Fifth Tutorial](#id-section21)
 * [Entry 22: 2020-02-11, Fourth Paper Discussion](#id-section22)
 * [Entry 23: 2020-02-26, Transcriptomics Day One](#id-section23)
-* [Entry 24: 2020-02-13, Fifth Paper Discussion](#id-section24)
-* [Entry 25: 2020-02-14, Friday](#id-section25)
+* [Entry 24: 2020-03-02, Fifth Paper Discussion](#id-section24)
+* [Entry 25: 2020-03-04, Transcriptomics Day Two](#id-section25)
 * [Entry 26: 2020-02-17, Monday](#id-section26)
 * [Entry 27: 2020-02-18, Tuesday](#id-section27)
 * [Entry 28: 2020-02-19, Wednesday](#id-section28)
@@ -815,11 +815,24 @@ cucumber Apostichopus japonicus at
 different hydrostatic pressure exposures](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-6480-9)
 
 ------    
-<div id='id-section14'/>   
+<div id='id-section25'/>   
 
 
-### Entry 14: 2020-01-30, Thursday.   
+### Entry 14: 2020-03-04, Transcriptomics Day Two.   
 
+```
+library(tximportData)
+library(tximport)
+library(DESeq2)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+library(ggpubr)
+library(readr)
+```
+
+[Transcriptomics Day Two](https://pespenilab.github.io/Ecological-Genomics/2020-03-044_RNA-seq_Day2.html)
 
 
 ------    
@@ -898,8 +911,8 @@ different hydrostatic pressure exposures](https://bmcgenomics.biomedcentral.com/
 
 
 
-------    
-<div id='id-section25'/>   
+------  
+<div id='id-section'/>   
 
 
 ### Entry 25: 2020-02-14, Friday.   
