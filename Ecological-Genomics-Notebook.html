@@ -401,8 +401,8 @@ summary {
 <li><a href="#id-section21">Entry 21: 2020-02-19, Fifth Tutorial</a></li>
 <li><a href="#id-section22">Entry 22: 2020-02-11, Fourth Paper Discussion</a></li>
 <li><a href="#id-section23">Entry 23: 2020-02-26, Transcriptomics Day One</a></li>
-<li><a href="#id-section24">Entry 24: 2020-02-13, Fifth Paper Discussion</a></li>
-<li><a href="#id-section25">Entry 25: 2020-02-14, Friday</a></li>
+<li><a href="#id-section24">Entry 24: 2020-03-02, Fifth Paper Discussion</a></li>
+<li><a href="#id-section25">Entry 25: 2020-03-04, Transcriptomics Day Two</a></li>
 <li><a href="#id-section26">Entry 26: 2020-02-17, Monday</a></li>
 <li><a href="#id-section27">Entry 27: 2020-02-18, Tuesday</a></li>
 <li><a href="#id-section28">Entry 28: 2020-02-19, Wednesday</a></li>
@@ -1031,7 +1031,7 @@ summary(div)</code></pre>
 <p>Generalized Linear Model (GLM): Neative binomial distribution. Wald test: p-value.</p>
 <p>Statistical Models. Ex: exp~time + source climate + (SC X time), we are asking how well do these variables predict expression level.</p>
 <p>Visualization:</p>
-<p>Sequencing Summary Statistics. Ex: Total read counts by sample, or Number of null genes by sample. Or heat map, how much ieach gene in each sample is changing relative to the control.</p>
+<p>Sequencing Summary Statistics. Ex: Total read counts by sample, or Number of null genes by sample. Or heat map, how much each gene in each sample is changing relative to the control.</p>
 <p>Enrichment Analysis:</p>
 <p>Functional database:</p>
 <ol style="list-style-type: decimal">
@@ -1050,12 +1050,51 @@ summary(div)</code></pre>
 <p>Gene Set Enrichment Analysis (rank based methods).</p>
 <p>Article: <a href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-6480-9">Insights into high-pressure acclimation: comparative transcriptome analysis of sea cucumber Apostichopus japonicus at different hydrostatic pressure exposures</a></p>
 <hr />
-<div id="id-section14"></div>
+<div id="id-section25"></div>
 
 
 </div>
-<div id="entry-14-2020-01-30-thursday." class="section level3">
-<h3>Entry 14: 2020-01-30, Thursday.</h3>
+<div id="entry-14-2020-03-04-transcriptomics-day-two." class="section level3">
+<h3>Entry 14: 2020-03-04, Transcriptomics Day Two.</h3>
+<pre><code>library(tximportData)
+library(tximport)
+library(DESeq2)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+library(ggpubr)
+library(readr)</code></pre>
+<p><a href="https://pespenilab.github.io/Ecological-Genomics/2020-03-044_RNA-seq_Day2.html">Transcriptomics Day Two</a></p>
+<p>Mapping rates in the initialmapping repository: Percent of the reads in files that mapped back to the transcriptome.</p>
+<pre><code>library(tximportData)
+library(tximport)
+
+#locate the directory containing the files. 
+dir &lt;- &quot;/data/project_data/RS_RNASeq/salmon/allmapping&quot; #defining our directory
+list.files(dir) 
+
+# read in table with sample ids
+samples &lt;- read.table(&quot;/data/project_data/RS_RNASeq/salmon/RS_samples.txt&quot;, header=TRUE) 
+
+# now point to quant files
+all_files &lt;- file.path(dir, samples$sample, &quot;quant.sf&quot;) #lining up samples
+names(all_files) &lt;- samples$sample 
+
+# what would be used if linked transcripts to genes
+#txi &lt;- tximport(files, type = &quot;salmon&quot;, tx2gene = tx2gene)
+# to be able to run without tx2gene
+txi &lt;- tximport(all_files, type = &quot;salmon&quot;, txOut=TRUE)  
+names(txi)
+
+head(txi$counts)
+
+countsMatrix &lt;- txi$counts
+dim(countsMatrix)
+#[1] 66069    76
+
+# To write out
+write.table(countsMatrix, file = &quot;RS_countsMatrix.txt&quot;, col.names = T, row.names = T, quote = F) </code></pre>
 <hr />
 <div id="id-section15"></div>
 
@@ -1124,7 +1163,7 @@ summary(div)</code></pre>
 <div id="entry-24-2020-02-13-thursday." class="section level3">
 <h3>Entry 24: 2020-02-13, Thursday.</h3>
 <hr />
-<div id="id-section25"></div>
+<div id="id-section"></div>
 
 
 </div>

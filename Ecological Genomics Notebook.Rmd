@@ -834,6 +834,38 @@ library(readr)
 
 [Transcriptomics Day Two](https://pespenilab.github.io/Ecological-Genomics/2020-03-044_RNA-seq_Day2.html)
 
+Mapping rates in the initialmapping repository: Percent of the reads in files that mapped back to the transcriptome.
+
+```
+library(tximportData)
+library(tximport)
+
+#locate the directory containing the files. 
+dir <- "/data/project_data/RS_RNASeq/salmon/allmapping" #defining our directory
+list.files(dir) 
+
+# read in table with sample ids
+samples <- read.table("/data/project_data/RS_RNASeq/salmon/RS_samples.txt", header=TRUE) 
+
+# now point to quant files
+all_files <- file.path(dir, samples$sample, "quant.sf") #lining up samples
+names(all_files) <- samples$sample 
+
+# what would be used if linked transcripts to genes
+#txi <- tximport(files, type = "salmon", tx2gene = tx2gene)
+# to be able to run without tx2gene
+txi <- tximport(all_files, type = "salmon", txOut=TRUE)  
+names(txi)
+
+head(txi$counts)
+
+countsMatrix <- txi$counts
+dim(countsMatrix)
+#[1] 66069    76
+
+# To write out
+write.table(countsMatrix, file = "RS_countsMatrix.txt", col.names = T, row.names = T, quote = F) 
+```
 
 ------    
 <div id='id-section15'/>   
