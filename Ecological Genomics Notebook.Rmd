@@ -28,7 +28,7 @@
 * [Entry 23: 2020-02-26, Transcriptomics Day One](#id-section23)
 * [Entry 24: 2020-03-02, Fifth Paper Discussion](#id-section24)
 * [Entry 25: 2020-03-04, Transcriptomics Day Two](#id-section25)
-* [Entry 26: 2020-02-17, Monday](#id-section26)
+* [Entry 26: 2020-03-18, Transcriptomic Day Three](#id-section26)
 * [Entry 27: 2020-02-18, Tuesday](#id-section27)
 * [Entry 28: 2020-02-19, Wednesday](#id-section28)
 * [Entry 29: 2020-02-20, Thursday](#id-section29)
@@ -868,12 +868,385 @@ write.table(countsMatrix, file = "RS_countsMatrix.txt", col.names = T, row.names
 ```
 
 ------    
-<div id='id-section15'/>   
+<div id='id-section26'/>   
 
 
-### Entry 15: 2020-01-31, Friday.   
+### Entry 15: 2020-03-18, Transcriptomic Day Three
+
+[Transcriptomic Day Three](https://pespenilab.github.io/Ecological-Genomics/2020-03-17_RNA-seq_Day3.html)
+
+Recall that two weeks ago you all wrote for loops to map your set of cleaned fastq files to the reference transcriptome. We discovered that we had low mapping rates, ~2%! We did some troubleshooting in class. We further hypothesized that many of our reads were not mapping because the reference we had selected included only the coding region. In working with 3’ RNAseq data, much of our sequencing effort is likely to be in the 3’ UTR (untranslated region). We concatenated the reference sequences for the coding (“cds”) and the 3’ UTR (“2kb downstream”) for each gene. We then mapped to this new reference using salmon (as you had done before). Our mapping rate improved dramatically, ranging from 40-70% of reads mapping across samples, mean of 52%.
+
+* We are working with: 66408 transcripts that we are mapping by 76 samples. 66408 is the number of reference transcripts.
+
+* In the matrix data table for each of our sample we have the amount of reads that mapped to the trancripts.
+
+* Few data (reads) will cause difficulty in detect signals or differential expession. But it will depend on our interest in detecting differential expression in transcripts be expressed in lower levels. But, 3-5 million reads is a good rules of thumbs. 
+
+* You can ask the sequencing agency to sequence it again for you to get more reads. 
+
+* If your mapping to a difference species, then that can decrease the percentage of mapping. 
+
+```
+## Set your working directory
+setwd("C:/Users/jorge/Desktop/F-UVM - Grad/Third Year - Second Semester - UVM/Ecological Genomics/Stats/RS_counts_samples")
+
+## Import the libraries that we're likely to need in this session
+library(DESeq2)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+library(ggpubr)
+library(wesanderson)
+library(vsn)  ### First: BiocManager::install("vsn") AND BiocManager::install("hexbin")
+
+## Import the counts matrix
+countsTable <- read.table("RS_cds2kb_countsMatrix.txt", header=TRUE, row.names=1)
+head(countsTable)
+dim(countsTable)
+countsTableRound <- round(countsTable) # Need to round because DESeq wants only integers
+head(countsTableRound)
+
+## Import the samples description table - links each sample to factors of the experimental design.
+# Need the colClasses otherwise imports "day" as numeric which DESeq doesn't like, coula altneratively change to d0, d5, d10
+conds <- read.delim("RS_samples.txt", header=TRUE, stringsAsFactors = TRUE, row.names=1, colClasses=c('factor', 'factor', 'factor', 'factor'))
+head(conds)
+dim(conds)
+
+############ Try with only Day 10 data
 
 
+
+# grep("10", names(countsTableRound), value = TRUE)
+# day10countstable <- subset(countsTableRound, grep("10", names(countsTableRound), value = TRUE)) #doesn't work has to be logical
+
+
+
+day10countstable <- countsTableRound %>% select(contains("10"))
+dim(day10countstable)
+
+
+
+conds10<- subset(conds, day=="10")
+dim(conds10)
+head(conds10)
+
+############
+
+## Let's see how many reads we have from each sample:
+colSums(countsTableRound) #Sum up all the reads from each colums
+mean(colSums(countsTableRound))
+barplot(colSums(countsTableRound), las=3, cex.names=0.5,names.arg = substring(colnames(countsTableRound),1,13))
+abline(h=mean(colSums(countsTableRound)), col="blue", lwd =2)
+
+# What's the average number of counts per gene
+rowSums(countsTableRound)
+mean(rowSums(countsTable))
+median(rowSums(countsTable)) # Gene expression does not follow a normal distribution
+# Wow, this is showing dispersion across genes - differences in magnitude of expression
+
+# What's the average number of counts per gene per sample
+apply(countsTableRound,2,mean)
+
+## Create a DESeq object and define the experimental design here with the tilde
+dds <- DESeqDataSetFromMatrix(countData = countsTableRound, 
+                              colData = conds, 
+                              design = ~ climate + day + treatment) 
+#DESeq does not like redundancing, you need to export unique and independent factors.
+#Above we use counts matrix, condition and experimental design.
+
+dim(dds) # 66408, 76
+
+# Filter out genes with few reads
+
+dds <- dds [rowSums(counts(dds)) > 76]
+dim(dds) # 23887, 76 This is filtering to sum of 76 reads across all samples
+# 7884, 76 Filtering to sum of 760 reads across all samples.
+
+## Run the DESeq model to test for differential gene expression: 
+#1) estimate size factors (per sample), 
+#2) estimate dispersion (per gene), 
+#3) run negative binomial glm
+
+dds <- DESeq(dds)
+
+# List the results you've generated
+
+resultsNames(dds)
+
+# [1] "Intercept"            "pop_BRU_05_vs_ASC_06"
+# [3] "pop_CAM_02_vs_ASC_06" "pop_ESC_01_vs_ASC_06"
+# [5] "pop_JAY_02_vs_ASC_06" "pop_KAN_04_vs_ASC_06"
+# [7] "pop_LOL_02_vs_ASC_06" "pop_MMF_13_vs_ASC_06"
+# [9] "pop_NOR_02_vs_ASC_06" "pop_XBM_07_vs_ASC_06"
+# [11] "day_10_vs_0"          "day_5_vs_0"          
+# [13] "treatment_D_vs_C"     "treatment_H_vs_C"  
+
+# Running the model: design = ~ climate + day + treatment
+# [1] "Intercept"        "climate_HD_vs_CW" "day_10_vs_0"     
+# [4] "day_5_vs_0"       "treatment_D_vs_C" "treatment_H_vs_C"
+
+# Order and list and summarize results from specific contrasts
+# Here you set your adjusted p-value cutoff, can make summary tables of the number of genes differentially expressed (up- or down-regulated) for each contrast
+res <- results(dds, alpha = 0.05) 
+res <- res[order(res$padj),]
+head(res) #Order atter positive logfold is in H and negatives are higher in C.
+
+# log2 fold change (MLE): treatment H vs C 
+# Wald test p-value: treatment H vs C 
+# DataFrame with 6 rows and 6 columns
+# baseMean    log2FoldChange
+# <numeric>         <numeric>
+#   MA_172878g0010   15.8548874481417  2.26882089354203
+# MA_28973g0010    18.8813749792546 -1.96674876177405
+# MA_10426002g0010 10.8980752578363 -1.20788022518503
+# MA_10426033g0010 67.6992372010061 0.738031525498394
+# MA_10429525g0010 60.5937645508928  1.17169400658399
+# MA_10433965g0010 49.9866944326994 0.612163878272307
+# lfcSE             stat
+# <numeric>        <numeric>
+#   MA_172878g0010   0.441981248080773 5.13329672558279
+# MA_28973g0010    0.413191368286972 -4.7598979860782
+# MA_10426002g0010 0.283872734887581 -4.2550061233016
+# MA_10426033g0010 0.180021281847179 4.09969042507382
+# MA_10429525g0010 0.279889684265675 4.18627077899663
+# MA_10433965g0010 0.150494357995378 4.06768656597152
+# pvalue                padj
+# <numeric>           <numeric>
+#   MA_172878g0010   2.84710503526532e-07 0.00210030938451523
+# MA_28973g0010     1.9369083372221e-06 0.00714428640184372
+# MA_10426002g0010 2.09043294338703e-05  0.0291896759160226
+# MA_10426033g0010 4.13703152545171e-05  0.0291896759160226
+# MA_10429525g0010 2.83575028580428e-05  0.0291896759160226
+# MA_10433965g0010 4.74821893713259e-05  0.0291896759160226
+
+summary(res)
+
+# out of 53066 with nonzero total read count
+# adjusted p-value < 0.05
+# LFC > 0 (up)       : 15, 0.028%
+# LFC < 0 (down)     : 6, 0.011%
+# outliers [1]       : 308, 0.58%
+# low counts [2]     : 45381, 86%
+# (mean count < 8)
+# [1] see 'cooksCutoff' argument of ?results
+# [2] see 'independentFiltering' argument of ?results
+
+res_treatCD <- results(dds, name = "treatment_D_vs_C", alpha=0.05)
+res_treatCD <- res_treatCD[order(res_treatCD$padj),]
+head(res_treatCD)
+
+# log2 fold change (MLE): treatment D vs C 
+# Wald test p-value: treatment D vs C 
+# DataFrame with 6 rows and 6 columns
+# baseMean   log2FoldChange
+# <numeric>        <numeric>
+#   MA_10257300g0010 20.9979917001674  6.3160877571623
+# MA_444738g0020   23.5872071084088 2.60475479951658
+# MA_57964g0010    7.89927388331396 5.39739873586083
+# MA_75192g0010    37.9183573851468 5.81210235837303
+# MA_10428616g0010  35.758883777048 3.82582767481363
+# MA_7017g0010     64.7924705055064 2.64414218710183
+# lfcSE             stat
+# <numeric>        <numeric>
+#   MA_10257300g0010 0.761778438070059 8.29123986911983
+# MA_444738g0020   0.330944830911612 7.87066168201386
+# MA_57964g0010    0.694994697724825 7.76610059548665
+# MA_75192g0010    0.768762098604425 7.56033936756775
+# MA_10428616g0010   0.5105334668651 7.49378429254776
+# MA_7017g0010     0.358927431461694 7.36678769949079
+# pvalue                 padj
+# <numeric>            <numeric>
+#   MA_10257300g0010 1.12074011571854e-16 1.74095769575717e-12
+# MA_444738g0020   3.52770431249488e-15 2.73996793951477e-11
+# MA_57964g0010    8.09392779865987e-15 4.19103581414608e-11
+# MA_75192g0010    4.02019076294704e-14 1.56124108279048e-10
+# MA_10428616g0010 6.69156646447418e-14 2.07893586918284e-10
+# MA_7017g0010     1.74788498523952e-13 4.52527422678512e-10
+
+summary(res_treatCD)
+
+# out of 23887 with nonzero total read count
+# adjusted p-value < 0.05
+# LFC > 0 (up)       : 671, 2.8%
+# LFC < 0 (down)     : 427, 1.8%
+# outliers [1]       : 62, 0.26%
+# low counts [2]     : 8291, 35%
+# (mean count < 2)
+# [1] see 'cooksCutoff' argument of ?results
+# [2] see 'independentFiltering' argument of ?results
+
+##### Data visualization #####
+
+# MA plot
+plotMA(res_treatCD,ylim=c(-3,3)) #On top expressed more in H vr C, below the line is the opposite. Red means they are significant expreseed and greater logfold change.
+
+
+# PCA
+vsd <- vst(dds, blind = FALSE)
+
+data <- plotPCA(vsd,intgroup=c("climate","treatment","day"), returnData=TRUE)
+percentVar <- round(100 * attr(data,"percentVar"))
+
+data$treatment <- factor(data$treatment, levels=c("C","H","D"), labels = c("C","H","D"))
+data$day <- factor(data$day, levels=c("0","5","10"), labels = c("0","5","10"))
+
+ggplot(data, aes(PC1, PC2, color=day, shape=treatment)) +
+  geom_point(size=4, alpha=0.85) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) +
+  theme_minimal()
+
+# Counts of specific top gene! (important validatition that the normalization, model is working)
+d <-plotCounts(dds, gene="MA_75192g0010", intgroup = (c("treatment","climate","day")), returnData=TRUE)
+d 
+
+
+p <-ggplot(d, aes(x=treatment, y=count, colour=day, shape=climate)) + 
+  theme_minimal() + theme(text = element_text(size=20), panel.grid.major=element_line(colour="grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size=3) +
+  scale_x_discrete(limits=c("C","H","D"))
+p
+
+# Heatmap of top 20 genes sorted by pvalue
+
+library(pheatmap)
+topgenes <- head(rownames(res_treatCD),20)
+mat <- assay(vsd)[topgenes,]
+mat <- mat - rowMeans(mat)
+df <- as.data.frame(colData(dds)[,c("treatment","climate","day")])
+pheatmap(mat, annotation_col=df)
+```
+
+```
+#Using only day 10
+## Set your working directory
+setwd("C:/Users/jorge/Desktop/F-UVM - Grad/Third Year - Second Semester - UVM/Ecological Genomics/Stats/RS_counts_samples")
+
+## Import the libraries that we're likely to need in this session
+library(DESeq2)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+library(ggpubr)
+library(wesanderson)
+library(vsn)  ### First: BiocManager::install("vsn") AND BiocManager::install("hexbin")
+
+## Import the counts matrix
+countsTable <- read.table("RS_cds2kb_countsMatrix.txt", header=TRUE, row.names=1)
+head(countsTable)
+dim(countsTable)
+countsTableRound <- round(countsTable) # Need to round because DESeq wants only integers
+head(countsTableRound)
+
+## Import the samples description table - links each sample to factors of the experimental design.
+# Need the colClasses otherwise imports "day" as numeric which DESeq doesn't like, coula altneratively change to d0, d5, d10
+conds <- read.delim("RS_samples.txt", header=TRUE, stringsAsFactors = TRUE, row.names=1, colClasses=c('factor', 'factor', 'factor', 'factor'))
+head(conds)
+dim(conds)
+
+############ Try with only Day 10 data
+
+
+
+# grep("10", names(countsTableRound), value = TRUE)
+# day10countstable <- subset(countsTableRound, grep("10", names(countsTableRound), value = TRUE)) #doesn't work has to be logical
+
+
+
+day10countstable <- countsTableRound %>% select(contains("10"))
+dim(day10countstable)
+
+
+
+conds10<- subset(conds, day=="10")
+dim(conds10)
+head(conds10)
+
+############
+
+## Let's see how many reads we have from each sample:
+colSums(day10countstable) #Sum up all the reads from each colums
+mean(colSums(day10countstable))
+barplot(colSums(day10countstable), las=3, cex.names=0.5,names.arg = substring(colnames(day10countstable),1,13))
+abline(h=mean(colSums(day10countstable)), col="blue", lwd =2)
+
+# What's the average number of counts per gene
+rowSums(countsTableRound)
+mean(rowSums(countsTable))
+median(rowSums(countsTable)) # Gene expression does not follow a normal distribution
+# Wow, this is showing dispersion across genes - differences in magnitude of expression
+
+# What's the average number of counts per gene per sample
+apply(countsTableRound,2,mean)
+
+## Create a DESeq object and define the experimental design here with the tilde
+dds <- DESeqDataSetFromMatrix(countData = day10countstable, 
+                              colData = conds10, 
+                              design = ~ climate + treatment + climate:treatment) 
+#DESeq does not like redundancing, you need to export unique and independent factors.
+#Above we use counts matrix, condition and experimental design.
+
+dim(dds) # 66408, 30
+
+# Filter out genes with few reads
+
+dds <- dds [rowSums(counts(dds)) > 30]
+dim(dds) # 24300, 30 This is filtering to sum of 76 reads across all samples
+
+## Run the DESeq model to test for differential gene expression: 
+#1) estimate size factors (per sample), 
+#2) estimate dispersion (per gene), 
+#3) run negative binomial glm
+
+dds <- DESeq(dds)
+
+# List the results you've generated
+
+resultsNames(dds)
+
+# [1] "Intercept"            "climate_HD_vs_CW"    
+# [3] "treatment_D_vs_C"     "treatment_H_vs_C"    
+# [5] "climateHD.treatmentD" "climateHD.treatmentH"
+
+res_treatment_D_vs_C <- results(dds, name = "treatment_D_vs_C", alpha=0.05)
+res_treatment_D_vs_C <- res_treatment_D_vs_C[order(res_treatment_D_vs_C$padj),]
+head(res_treatment_D_vs_C)
+
+# log2 fold change (MLE): treatment D vs C 
+# Wald test p-value: treatment D vs C 
+# DataFrame with 6 rows and 6 columns
+# baseMean    log2FoldChange             lfcSE              stat
+# <numeric>         <numeric>         <numeric>         <numeric>
+#   MA_10426407g0030 219.715584286121  2.55696344469482 0.324906793273337  7.86983681976665
+# MA_75192g0010    77.5190010889928  8.04619662596281  1.17408907419792  6.85313985351545
+# MA_10425837g0010 293.426521892966 -3.17899129382686 0.462410078365211 -6.87483132951115
+# MA_824288g0010   154.710951677063 -4.15994435220765 0.610952834706399 -6.80894516874901
+# MA_133272g0010   9.82528137178526 -6.86599490523253  1.03504041639281 -6.63355246470566
+# MA_71201g0010    16.1438828561619 -7.29150111298197   1.1007571709411 -6.62407777616205
+# pvalue                 padj
+# <numeric>            <numeric>
+#   MA_10426407g0030 3.55104122313316e-15 4.77579534099179e-11
+# MA_75192g0010    7.22463913264591e-12 3.23880572316516e-08
+# MA_10425837g0010 6.20632480288557e-12 3.23880572316516e-08
+# MA_824288g0010   9.83169393331549e-12   3.305661292729e-08
+# MA_133272g0010   3.27702420845957e-11 7.83231116913848e-08
+# MA_71201g0010    3.49422760166785e-11 7.83231116913848e-08
+
+summary(res_treatment_D_vs_C)
+
+# out of 24300 with nonzero total read count
+# adjusted p-value < 0.05
+# LFC > 0 (up)       : 257, 1.1%
+# LFC < 0 (down)     : 327, 1.3%
+# outliers [1]       : 121, 0.5%
+# low counts [2]     : 10730, 44%
+# (mean count < 3)
+# [1] see 'cooksCutoff' argument of ?results
+# [2] see 'independentFiltering' argument of ?results
+```
 
 ------    
 <div id='id-section16'/>   
