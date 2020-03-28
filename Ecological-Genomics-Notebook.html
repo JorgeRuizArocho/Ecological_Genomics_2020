@@ -394,18 +394,18 @@ summary {
 <li><a href="#id-section3">Entry 3: 2020-01-22, Second Info Updates</a></li>
 <li><a href="#id-section9">Entry 4: 2020-01-27, First Paper Discussion</a></li>
 <li><a href="#id-section10">Entry 5: 2020-01-29, Second Tutorial</a></li>
-<li><a href="#id-section11">Entry 11: 2020-02-03, Second Paper Dicsussion</a></li>
-<li><a href="#id-section18">Entry 18: 2020-02-05, Third Tutorial</a></li>
-<li><a href="#id-section19">Entry 19: 2020-02-10, Third Paper Discussion</a></li>
-<li><a href="#id-section20">Entry 20: 2020-02-12, Fourth Tutorial</a></li>
-<li><a href="#id-section21">Entry 21: 2020-02-19, Fifth Tutorial</a></li>
-<li><a href="#id-section22">Entry 22: 2020-02-11, Fourth Paper Discussion</a></li>
-<li><a href="#id-section23">Entry 23: 2020-02-26, Transcriptomics Day One</a></li>
-<li><a href="#id-section24">Entry 24: 2020-03-02, Fifth Paper Discussion</a></li>
-<li><a href="#id-section25">Entry 25: 2020-03-04, Transcriptomics Day Two</a></li>
-<li><a href="#id-section26">Entry 26: 2020-03-18, Transcriptomic Day Three</a></li>
-<li><a href="#id-section27">Entry 27: 2020-02-18, Tuesday</a></li>
-<li><a href="#id-section28">Entry 28: 2020-02-19, Wednesday</a></li>
+<li><a href="#id-section11">Entry 6: 2020-02-03, Second Paper Dicsussion</a></li>
+<li><a href="#id-section18">Entry 7: 2020-02-05, Third Tutorial</a></li>
+<li><a href="#id-section19">Entry 8: 2020-02-10, Third Paper Discussion</a></li>
+<li><a href="#id-section20">Entry 9: 2020-02-12, Fourth Tutorial</a></li>
+<li><a href="#id-section21">Entry 10: 2020-02-19, Fifth Tutorial</a></li>
+<li><a href="#id-section22">Entry 11: 2020-02-11, Fourth Paper Discussion</a></li>
+<li><a href="#id-section23">Entry 12: 2020-02-26, Transcriptomics Day One</a></li>
+<li><a href="#id-section24">Entry 13: 2020-03-02, Fifth Paper Discussion</a></li>
+<li><a href="#id-section25">Entry 14: 2020-03-04, Transcriptomics Day Two</a></li>
+<li><a href="#id-section26">Entry 15: 2020-03-18, Transcriptomic Day Three</a></li>
+<li><a href="#id-section17">Entry 16: 2020-03-23, Sixth Paper Discussion</a></li>
+<li><a href="#id-section28">Entry 17: 2020-02-19, First Epigenomic Section Wednesday</a></li>
 <li><a href="#id-section29">Entry 29: 2020-02-20, Thursday</a></li>
 <li><a href="#id-section30">Entry 30: 2020-02-21, Friday</a></li>
 <li><a href="#id-section31">Entry 31: 2020-02-24, Monday</a></li>
@@ -1467,19 +1467,160 @@ summary(res_treatment_D_vs_C)
 # [1] see &#39;cooksCutoff&#39; argument of ?results
 # [2] see &#39;independentFiltering&#39; argument of ?results</code></pre>
 <hr />
-<div id="id-section16"></div>
+<div id="id-section27"></div>
 
 
 </div>
-<div id="entry-16-2020-02-03-monday." class="section level3">
-<h3>Entry 16: 2020-02-03, Monday.</h3>
+<div id="entry-16-2020-02-03-sixth-paper-discussion." class="section level3">
+<h3>Entry 16: 2020-02-03, Sixth Paper Discussion.</h3>
+<p>Integrating biological data and studying their interactions:</p>
+<p>Types of data:</p>
+<ul>
+<li>Gene expression:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>counts(normalized by length, etc.)</p></li>
+<li><p>quantitative traits</p></li>
+</ol>
+<ul>
+<li>Sequence data:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Fatqc, SNPs, QTL</p></li>
+<li><p>pi, AMOVA</p></li>
+</ol>
+<ul>
+<li>Environmental data:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Stress exposure, temperature gradient</p></li>
+<li><p>Discrete, continous or well-ordered environemntal data.</p></li>
+</ol>
+<ul>
+<li>Gene copy numbers (GNVs):</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Form of duplication/deletion</p></li>
+<li><p>Alignment depth</p></li>
+<li><p>Relative to a reference genome</p></li>
+<li><p>Common to remove short CNVs, overly represented CNVs</p></li>
+</ol>
+<ul>
+<li>Functional enrichment (GO):</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Associating genes with hierarchical functions.</li>
+</ol>
+<ul>
+<li>Chromatin state:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>accessible/not accessible, specific histone modifications.</li>
+</ol>
+<p>What types of interactions are we interested in exploring?</p>
+<ol style="list-style-type: decimal">
+<li><p>Expression counts x discrete factors (environment, chromatin state)</p></li>
+<li><p>P = G x E x ……</p></li>
+<li><p>Chromatin state influences transcroptomes access, influences expression.</p></li>
+<li><p>Requires observations for each contribution of levels.</p></li>
+</ol>
+<ul>
+<li>Expression versus continouos factors (pops. diversity, environmental gradient):</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Requires acceptance of a model for ‘missing’ observations. Scatteplot exp vs “G”.</li>
+</ol>
+<ul>
+<li>Expression versul physical space:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Approach from spatial stats. var(P) versus distance.</li>
+</ol>
+<ul>
+<li>Expression vs GO terms:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Useful for detecting unde/overrepresented genes.</p></li>
+<li><p>Helps detanling causal relationships in DE data.</p></li>
+</ol>
+<ul>
+<li>Gene-phenotpe mapping:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>change gene/set of genes causes change in trait</p></li>
+<li><p>QTL: Trait mapping.</p></li>
+<li><p>GRN directed edges as DE in trget mode.</p></li>
+<li><p>Genotype networks</p></li>
+</ol>
+<p>Analysis:</p>
+<ol style="list-style-type: decimal">
+<li><p>Expression versus discrete factors. (Reaction graphs)</p></li>
+<li><p>Two-way ANOVA: cont ~ 2+ discrete factors + interactions.</p></li>
+<li><p>Yijk = intercept + ind. effect of factor j + ind. effect of factor i + non-additive effects + error ~N(o,G).</p></li>
+<li><p>AMOVA (Analysis of Molecular Variant). Y = allele frequencies. You are partinianing variance in allele frequences by your difference factors.</p></li>
+<li><p>ANCOVA: is a blend of analysis of variance (ANOVA) and regression. It is similar to factorial ANOVA, in that it can tell you what additional information you can get by considering one independent variable (factor) at a time, without the influence of the others.</p></li>
+</ol>
+<ul>
+<li>Expression vs continiouos:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>First thin we might try is correlation (p)</p></li>
+<li><p>linear regression/hiher order regression</p></li>
+<li><p>Canalization (Exp levels vs a continous gradient (environment/gene space)). We expect a sudden jump in expression level as we move.</p></li>
+<li><p>Higher dimension exp. perturbations in reation norm space. (Gene versus Expression (heatmap to observe changes)).</p></li>
+</ol>
+<ul>
+<li>Geno-Pheno mapping</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Modularity</p></li>
+<li><p>Pleitropic effect within modules.</p></li>
+<li><p>Independence between trait sets/modules.</p></li>
+</ol>
+<p>Paper:</p>
+<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31298693">Genome-Wide Genotype-Expression Relationships Reveal Both Copy Number and Single Nucleotide Differentiation Contribute to Differential Gene Expression between Stickleback Ecotypes</a></p>
+<p>Parallel divergence: When we have different populations adapting to the same environemnt (even in different locations) the same variants often get selected.</p>
 <hr />
 <div id="id-section17"></div>
 
 
 </div>
-<div id="entry-17-2020-02-04-tuesday." class="section level3">
-<h3>Entry 17: 2020-02-04, Tuesday.</h3>
+<div id="entry-17-2020-02-04-first-epigenomic-section." class="section level3">
+<h3>Entry 17: 2020-02-04, First Epigenomic Section.</h3>
+<p>Info Update:</p>
+<p>Changes to gene expression that are not due changes in DNA sequence. Anything that influence the transcriptional potential of a cell.</p>
+<p>Genetic variation directly influence epigenetic variation. Ex. Some organisms can not metalated.</p>
+<p>Persistance under environmental change: accimation, adaptation.</p>
+<p>Mechanisms of epigenetics:</p>
+<ol style="list-style-type: decimal">
+<li><p>Phosphorylation</p></li>
+<li><p>non-coding RNAs (microRNAs)</p></li>
+<li><p>small interfering RNAs</p></li>
+<li><p>Histone modifications</p></li>
+<li><p>DNA methylation (easier to quantified and important in other mechanisms)</p></li>
+</ol>
+<p>Functional consequences of methylation:</p>
+<ol style="list-style-type: decimal">
+<li>Promoters/enhancers:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>High methylation = repression of expression.</p></li>
+<li><p>Inhibits binding of TFs.</p></li>
+<li><p>Chromatin structure</p></li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Intergenic:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Silence TEs, etc.</li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li>Gene Body (Intron/Exon)</li>
+</ol>
+<p>Plants show a consistent higher CHG methylation.</p>
+<p>Bisulfite sequencing (allow us to measure levels of methylation): forcing the creation of uracile, unable to happen if there is methylation.</p>
+<p>Epigenomic data:</p>
+<p>Working with copepods. Highly plastics.</p>
 <hr />
 <div id="id-section18"></div>
 
@@ -1541,7 +1682,7 @@ summary(res_treatment_D_vs_C)
 <div id="entry-26-2020-02-17-monday." class="section level3">
 <h3>Entry 26: 2020-02-17, Monday.</h3>
 <hr />
-<div id="id-section27"></div>
+<div id="id-section80"></div>
 
 
 </div>

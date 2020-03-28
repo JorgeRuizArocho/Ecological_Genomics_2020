@@ -19,18 +19,18 @@
 * [Entry 3: 2020-01-22, Second Info Updates](#id-section3)
 * [Entry 4: 2020-01-27, First Paper Discussion](#id-section9)
 * [Entry 5: 2020-01-29, Second Tutorial](#id-section10)
-* [Entry 11: 2020-02-03, Second Paper Dicsussion](#id-section11)
-* [Entry 18: 2020-02-05, Third Tutorial](#id-section18)
-* [Entry 19: 2020-02-10, Third Paper Discussion](#id-section19)
-* [Entry 20: 2020-02-12, Fourth Tutorial](#id-section20)
-* [Entry 21: 2020-02-19, Fifth Tutorial](#id-section21)
-* [Entry 22: 2020-02-11, Fourth Paper Discussion](#id-section22)
-* [Entry 23: 2020-02-26, Transcriptomics Day One](#id-section23)
-* [Entry 24: 2020-03-02, Fifth Paper Discussion](#id-section24)
-* [Entry 25: 2020-03-04, Transcriptomics Day Two](#id-section25)
-* [Entry 26: 2020-03-18, Transcriptomic Day Three](#id-section26)
-* [Entry 27: 2020-02-18, Tuesday](#id-section27)
-* [Entry 28: 2020-02-19, Wednesday](#id-section28)
+* [Entry 6: 2020-02-03, Second Paper Dicsussion](#id-section11)
+* [Entry 7: 2020-02-05, Third Tutorial](#id-section18)
+* [Entry 8: 2020-02-10, Third Paper Discussion](#id-section19)
+* [Entry 9: 2020-02-12, Fourth Tutorial](#id-section20)
+* [Entry 10: 2020-02-19, Fifth Tutorial](#id-section21)
+* [Entry 11: 2020-02-11, Fourth Paper Discussion](#id-section22)
+* [Entry 12: 2020-02-26, Transcriptomics Day One](#id-section23)
+* [Entry 13: 2020-03-02, Fifth Paper Discussion](#id-section24)
+* [Entry 14: 2020-03-04, Transcriptomics Day Two](#id-section25)
+* [Entry 15: 2020-03-18, Transcriptomic Day Three](#id-section26)
+* [Entry 16: 2020-03-23, Sixth Paper Discussion](#id-section17)
+* [Entry 17: 2020-02-19, First Epigenomic Section Wednesday](#id-section28)
 * [Entry 29: 2020-02-20, Thursday](#id-section29)
 * [Entry 30: 2020-02-21, Friday](#id-section30)
 * [Entry 31: 2020-02-24, Monday](#id-section31)
@@ -1249,20 +1249,173 @@ summary(res_treatment_D_vs_C)
 ```
 
 ------    
-<div id='id-section16'/>   
+<div id='id-section27'/>   
 
 
-### Entry 16: 2020-02-03, Monday.   
+### Entry 16: 2020-02-03, Sixth Paper Discussion.   
 
+Integrating biological data and studying their interactions: 
 
+Types of data:
+
+* Gene expression: 
+
+1) counts(normalized by length, etc.)
+
+2) quantitative traits
+
+* Sequence data: 
+
+1) Fatqc, SNPs, QTL
+
+2) pi, AMOVA 
+
+* Environmental data:
+
+1) Stress exposure, temperature gradient
+
+2) Discrete, continous or well-ordered environemntal data.
+
+* Gene copy numbers (GNVs):
+
+1) Form of duplication/deletion
+
+2) Alignment depth
+
+3) Relative to a reference genome
+
+4) Common to remove short CNVs, overly represented CNVs
+
+* Functional enrichment (GO):
+
+1) Associating genes with hierarchical functions.
+
+* Chromatin state:
+
+1) accessible/not accessible, specific histone modifications. 
+
+What types of interactions are we interested in exploring?
+
+1) Expression counts x discrete factors (environment, chromatin state)
+
+2) P = G x E x ......
+
+3) Chromatin state influences transcroptomes access, influences expression.
+
+4) Requires observations for each contribution of levels. 
+
+* Expression versus continouos factors (pops. diversity, environmental gradient):
+
+1) Requires acceptance of a model for 'missing' observations. Scatteplot exp vs "G".
+
+* Expression versul physical space:
+
+1) Approach from spatial stats. var(P) versus distance. 
+
+* Expression vs GO terms:
+
+1) Useful for detecting unde/overrepresented genes. 
+
+2) Helps detanling causal relationships in DE data. 
+
+* Gene-phenotpe mapping: 
+
+1) change gene/set of genes causes change in trait
+
+2) QTL: Trait mapping.
+
+3) GRN directed edges as DE in trget mode.
+
+4) Genotype networks
+
+Analysis: 
+
+1) Expression versus discrete factors. (Reaction graphs)
+
+2) Two-way ANOVA: cont ~ 2+ discrete factors + interactions.
+
+3) Yijk = intercept + ind. effect of factor j + ind. effect of factor i + non-additive effects + error ~N(o,G).
+
+4) AMOVA (Analysis of Molecular Variant). Y = allele frequencies. You are partinianing variance in allele frequences by your difference factors. 
+
+5) ANCOVA: is a blend of analysis of variance (ANOVA) and regression. It is similar to factorial ANOVA, in that it can tell you what additional information you can get by considering one independent variable (factor) at a time, without the influence of the others. 
+
+* Expression vs continiouos:
+
+1) First thin we might try is correlation (p)
+
+2) linear regression/hiher order regression
+
+3) Canalization (Exp levels vs a continous gradient (environment/gene space)). We expect a sudden jump in expression level as we move. 
+
+4) Higher dimension exp. perturbations in reation norm space. (Gene versus Expression (heatmap to observe changes)).
+
+* Geno-Pheno mapping
+
+1) Modularity 
+
+2) Pleitropic effect within modules. 
+
+3) Independence between trait sets/modules. 
+
+Paper: 
+
+[Genome-Wide Genotype-Expression Relationships Reveal
+Both Copy Number and Single Nucleotide Differentiation
+Contribute to Differential Gene Expression between
+Stickleback Ecotypes](https://www.ncbi.nlm.nih.gov/pubmed/31298693)
+
+Parallel divergence: When we have different populations adapting to the same environemnt (even in different locations) the same variants often get selected. 
 
 ------    
 <div id='id-section17'/>   
 
 
-### Entry 17: 2020-02-04, Tuesday.   
+### Entry 17: 2020-02-04, First Epigenomic Section.   
 
+Info Update: 
 
+Changes to gene expression that are not due changes in DNA sequence. Anything that influence the transcriptional potential of a cell. 
+
+Genetic variation directly influence epigenetic variation. Ex. Some organisms can not metalated. 
+
+Persistance under environmental change: accimation, adaptation. 
+
+Mechanisms of epigenetics: 
+
+1) Phosphorylation
+
+2) non-coding RNAs (microRNAs)
+
+3) small interfering RNAs
+
+4) Histone modifications
+
+5) DNA methylation (easier to quantified and important in other mechanisms)
+
+Functional consequences of methylation:
+
+1) Promoters/enhancers: 
+
+a) High methylation = repression of expression. 
+
+b) Inhibits binding of TFs.
+
+c) Chromatin structure
+
+2) Intergenic:
+
+a) Silence TEs, etc.
+
+3) Gene Body (Intron/Exon)
+
+Plants show a consistent higher CHG methylation.
+
+Bisulfite sequencing (allow us to measure levels of methylation): forcing the creation of uracile, unable to happen if there is methylation.
+
+Epigenomic data:
+
+Working with copepods. Highly plastics. 
 
 ------    
 <div id='id-section18'/>   
@@ -1333,7 +1486,7 @@ summary(res_treatment_D_vs_C)
 
 
 ------    
-<div id='id-section27'/>   
+<div id='id-section80'/>   
 
 
 ### Entry 27: 2020-02-18, Tuesday.   
