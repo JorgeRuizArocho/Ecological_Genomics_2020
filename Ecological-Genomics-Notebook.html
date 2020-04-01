@@ -405,9 +405,9 @@ summary {
 <li><a href="#id-section25">Entry 14: 2020-03-04, Transcriptomics Day Two</a></li>
 <li><a href="#id-section26">Entry 15: 2020-03-18, Transcriptomic Day Three</a></li>
 <li><a href="#id-section17">Entry 16: 2020-03-23, Sixth Paper Discussion</a></li>
-<li><a href="#id-section28">Entry 17: 2020-02-19, First Epigenomic Section Wednesday</a></li>
-<li><a href="#id-section29">Entry 29: 2020-02-20, Thursday</a></li>
-<li><a href="#id-section30">Entry 30: 2020-02-21, Friday</a></li>
+<li><a href="#id-section28">Entry 17: 2020-03-25, First Epigenomic Section</a></li>
+<li><a href="#id-section1000">Entry 18: 2020-03-30, Seventh Paper Discussion</a></li>
+<li><a href="#id-section30">Entry 19: 2020-04-01, Second Epigenomic Section</a></li>
 <li><a href="#id-section31">Entry 31: 2020-02-24, Monday</a></li>
 <li><a href="#id-section32">Entry 32: 2020-02-25, Tuesday</a></li>
 <li><a href="#id-section33">Entry 33: 2020-02-26, Wednesday</a></li>
@@ -1622,24 +1622,153 @@ summary(res_treatment_D_vs_C)
 <p>Epigenomic data:</p>
 <p>Working with copepods. Highly plastics.</p>
 <hr />
-<div id="id-section18"></div>
+<div id="id-section1000"></div>
 
 
 </div>
-<div id="entry-18-2020-02-05-wednesday." class="section level3">
-<h3>Entry 18: 2020-02-05, Wednesday.</h3>
+<div id="entry-18-2020-03-30-seventh-paper-discussion." class="section level3">
+<h3>Entry 18: 2020-03-30, Seventh Paper Discussion.</h3>
 <hr />
-<div id="id-section19"></div>
+<div id="id-section30"></div>
 
 
 </div>
-<div id="entry-19-2020-02-06-thursday." class="section level3">
-<h3>Entry 19: 2020-02-06, Thursday.</h3>
+<div id="entry-19-2020-04-01-second-epigenomic-section." class="section level3">
+<h3>Entry 19: 2020-04-01, Second Epigenomic Section.</h3>
+<p>library(methylKit) library(tidyverse) library(ggplot2) library(pheatmap)</p>
+</div>
+</div>
+<div id="first-we-want-to-read-in-the-raw-methylation-calls-with-methylkit" class="section level1">
+<h1>first, we want to read in the raw methylation calls with methylkit</h1>
+<p>dir &lt;- “/Users/jorge/Desktop/Copepods”</p>
+</div>
+<div id="set-directory-with-absolute-path-why-is-this-necessary-i-have-no-idea-but-gz-files-wont-work-with-relative-paths" class="section level1">
+<h1>set directory with absolute path (why is this necessary? I have no idea, but gz files wont work with relative paths)</h1>
+</div>
+<div id="read-in-the-sample-ids" class="section level1">
+<h1>read in the sample ids</h1>
+<p>samples &lt;- read.table(“~/data/users/j/r/jruizaro/largefiles/Copepods/sample_id.txt”, header=FALSE)</p>
+<p>samples &lt;- read.table(‘sample_id.txt’)</p>
+</div>
+<div id="now-point-to-coverage-files" class="section level1">
+<h1>now point to coverage files</h1>
+<p>files &lt;- file.path(dir, samples$V1) all(file.exists(files))</p>
+</div>
+<div id="convert-to-list" class="section level1">
+<h1>convert to list</h1>
+<p>file.list &lt;- as.list(files)</p>
+</div>
+<div id="get-the-names-only-for-naming-our-samples" class="section level1">
+<h1>get the names only for naming our samples</h1>
+<p>nmlist &lt;- as.list(gsub(&quot;_1_bismark_bt2_pe.bismark.cov.gz“,”&quot;,samples$V1))</p>
+</div>
+<div id="use-methread-to-read-in-the-coverage-files" class="section level1">
+<h1>use methRead to read in the coverage files</h1>
+<p>myobj &lt;- methRead(location= file.list, sample.id = nmlist, assembly = “atonsa”, # this is just a string. no actual database dbtype = “tabix”, context = “CpG”, resolution = “base”, mincov = 20, treatment = c(0,0,0,0, 1,1,1,1, 2,2,2,2, 3,3,3,3, 4,4,4,4), pipeline = “bismarkCoverage”, )</p>
+<div id="section" class="section level6">
+<h6></h6>
+</div>
+</div>
+<div id="visualize-coverage-and-filter" class="section level1">
+<h1>visualize coverage and filter</h1>
+<div id="section-1" class="section level6">
+<h6></h6>
+</div>
+</div>
+<div id="we-can-look-at-the-coverage-for-individual-samples-with-getcoveragestats" class="section level1">
+<h1>We can look at the coverage for individual samples with getCoverageStats()</h1>
+<p>getCoverageStats(myobj[[1]], plot = TRUE)</p>
+</div>
+<div id="and-can-plot-all-of-our-samples-at-once-to-compare." class="section level1">
+<h1>and can plot all of our samples at once to compare.</h1>
+</div>
+<div id="filter-samples-by-depth-with-filterbycoverage" class="section level1">
+<h1>filter samples by depth with filterByCoverage()</h1>
+<p>filtered.myobj &lt;- filterByCoverage(myobj, lo.count=20, lo.perc = NULL hi.count=NULL, hi.perc = 97.5)</p>
+<div id="section-2" class="section level6">
+<h6></h6>
+</div>
+</div>
+<div id="merge-samples" class="section level1">
+<h1>merge samples</h1>
+<div id="section-3" class="section level6">
+<h6></h6>
+<p>#Note! This takes a while and we’re skipping it</p>
+</div>
+</div>
+<div id="use-unite-to-merge-all-the-samples.-we-will-require-sites-to-be-present-in-each-sample-or-else-will-drop-it" class="section level1">
+<h1>use unite() to merge all the samples. We will require sites to be present in each sample or else will drop it</h1>
+<p>meth &lt;- unite(filtered.myobj,mc.cores=3, suffix=“united”)</p>
+<p>meth &lt;- methylKit:::readMethylBaseDB()</p>
+</div>
+<div id="percmethylation-calculates-the-percent-methylation-for-each-site-and-sample" class="section level1">
+<h1>percMethylation() calculates the percent methylation for each site and sample</h1>
+<p>pm &lt;- percMethylation(meth)</p>
+<p>#plot methylation histograms</p>
+<p>ggplot(gather(as.data.frame(pm)), aes(value)) + geom_histogram(bins = 10, color=“black”, fill=“grey”) + facet_wrap(~key)</p>
+</div>
+<div id="calculate-and-plot-mean-methylation" class="section level1">
+<h1>calculate and plot mean methylation</h1>
+<p>sp/means &lt;- colMeans(pm)</p>
+<p>p.df &lt;- data.frame(sample=names(sp.means), group = substr(names(sp.means), 1,6), methylation = sp.means) ggplot(p.df, aes(x=group, y=methylation, color=group)) + stat_summary(color=“black”) + geom_jitter(width=0.1, size=3)</p>
+</div>
+<div id="sample-clustering" class="section level1">
+<h1>sample clustering</h1>
+<p>clusterSamples(meth, dist=“correlation”, methog=“ward.D”, plot = TRUE)</p>
+</div>
+<div id="pca" class="section level1">
+<h1>PCA</h1>
+<p>PCASamples()</p>
+</div>
+<div id="subset-with-reorganize" class="section level1">
+<h1>subset with reorganize()</h1>
+<p>meth_sub &lt;- reorganize(meth, sample.ids =c(“AA_F00_1”,“AA_F00_2”,“AA_F00_3”, “AA_F00_4”, “HH_F25_1”,“HH_F25_2”,“HH_F25_3”,“HH_F25_4”), treatment = c(0,0,0,0,1,1,1,1), save.db=FALSE)</p>
+</div>
+<div id="calculate-differential-methylation" class="section level1">
+<h1>calculate differential methylation</h1>
+<p>myDiff &lt;- calculateDiffMeth(meth_sub, overdispersion=“MN”, mc.cores = 1, suffix =“AA_HH” adjust = “qvalue”, test = &quot;Chisq)</p>
+</div>
+<div id="get-all-differentially-methylated-bases" class="section level1">
+<h1>get all differentially methylated bases</h1>
+<p>myDiff &lt;- getMethylDiff(myDiff, qvalue = 0.05, difference = 10)</p>
+</div>
+<div id="we-can-visualize-the-changes-in-methylation-frequencies-quickly." class="section level1">
+<h1>we can visualize the changes in methylation frequencies quickly.</h1>
+<p>hist(getData(myDiff)$meth.diff)</p>
+</div>
+<div id="get-hyper-methylated-bases" class="section level1">
+<h1>get hyper methylated bases</h1>
+</div>
+<div id="get-hypo-methylated-bases" class="section level1">
+<h1>get hypo methylated bases</h1>
+<p>#heatmaps first</p>
+</div>
+<div id="get-percent-methylation-matrix" class="section level1">
+<h1>get percent methylation matrix</h1>
+<p>pm &lt;- percMethylation(meth_sub) # make a dataframe with snp id’s, methylation, etc. sig.in &lt;- as.numeric(row.names(myDiff)) pm.sig &lt;- pm[sig.in,]</p>
+</div>
+<div id="add-snp-chr-start-stop" class="section level1">
+<h1>add snp, chr, start, stop</h1>
+<p>din &lt;- getData(myDiff)[,1:3] df.out &lt;- cbind(paste(getData(myDiff)<span class="math inline">\(chr, getData(myDiff)\)</span>start, sep=“:”), din, pm.sig) colnames(df.out) &lt;- c(“snp”, colnames(din), colnames(df.out[5:ncol(df.out)])) df.out &lt;- (cbind(df.out,getData(myDiff)[,5:7]))</p>
+<div id="section-4" class="section level4">
+<h4></h4>
+</div>
+</div>
+<div id="heatmap" class="section level1">
+<h1>heatmap</h1>
+<div id="section-5" class="section level4">
+<h4></h4>
+<p>my_heatmap &lt;- pheatmap(pm.sig, show_rownames = FALSE)</p>
+</div>
+</div>
+<div id="we-can-also-normalize" class="section level1">
+<h1>we can also normalize</h1>
+<p>ctrmean &lt;- rowMeans(pm.sig[,1:4]) h.norm &lt;- (pm.sig-ctrmean)</p>
+<p>my_heatmap &lt;- pheatmap(h.norm, show_rownames = FALSE)</p>
 <hr />
 <div id="id-section20"></div>
 
 
-</div>
 <div id="entry-20-2020-02-07-friday." class="section level3">
 <h3>Entry 20: 2020-02-07, Friday.</h3>
 <hr />
@@ -1689,7 +1818,7 @@ summary(res_treatment_D_vs_C)
 <div id="entry-27-2020-02-18-tuesday." class="section level3">
 <h3>Entry 27: 2020-02-18, Tuesday.</h3>
 <hr />
-<div id="id-section28"></div>
+<div id="id-section"></div>
 
 
 </div>
@@ -1703,7 +1832,7 @@ summary(res_treatment_D_vs_C)
 <div id="entry-29-2020-02-20-thursday." class="section level3">
 <h3>Entry 29: 2020-02-20, Thursday.</h3>
 <hr />
-<div id="id-section30"></div>
+<div id="id-section"></div>
 
 
 </div>

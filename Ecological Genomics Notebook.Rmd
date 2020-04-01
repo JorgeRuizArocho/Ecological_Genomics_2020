@@ -30,9 +30,9 @@
 * [Entry 14: 2020-03-04, Transcriptomics Day Two](#id-section25)
 * [Entry 15: 2020-03-18, Transcriptomic Day Three](#id-section26)
 * [Entry 16: 2020-03-23, Sixth Paper Discussion](#id-section17)
-* [Entry 17: 2020-02-19, First Epigenomic Section](#id-section28)
-* [Entry 18: 2020-02-20, Thursday](#id-section29)
-* [Entry 19: 2020-02-21, Second Epigenomic Section](#id-section30)
+* [Entry 17: 2020-03-25, First Epigenomic Section](#id-section28)
+* [Entry 18: 2020-03-30, Seventh Paper Discussion](#id-section1000)
+* [Entry 19: 2020-04-01, Second Epigenomic Section](#id-section30)
 * [Entry 31: 2020-02-24, Monday](#id-section31)
 * [Entry 32: 2020-02-25, Tuesday](#id-section32)
 * [Entry 33: 2020-02-26, Wednesday](#id-section33)
@@ -1418,7 +1418,7 @@ Epigenomic data:
 Working with copepods. Highly plastics. 
 
 ------    
-<div id='id-section28'/>   
+<div id='id-section1000'/>   
 
 
 ### Entry 18: 2020-03-30, Seventh Paper Discussion.   
