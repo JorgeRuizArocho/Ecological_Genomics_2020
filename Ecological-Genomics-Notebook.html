@@ -1640,15 +1640,14 @@ summary(res_treatment_D_vs_C)
 </div>
 <div id="first-we-want-to-read-in-the-raw-methylation-calls-with-methylkit" class="section level1">
 <h1>first, we want to read in the raw methylation calls with methylkit</h1>
-<p>dir &lt;- “/Users/jorge/Desktop/Copepods”</p>
+<p>dir &lt;- setwd(“C:/Users/jorge/Desktop/F-UVM - Grad/Third Year - Second Semester - UVM/Ecological Genomics/Epigenetics_data”)</p>
 </div>
 <div id="set-directory-with-absolute-path-why-is-this-necessary-i-have-no-idea-but-gz-files-wont-work-with-relative-paths" class="section level1">
 <h1>set directory with absolute path (why is this necessary? I have no idea, but gz files wont work with relative paths)</h1>
 </div>
 <div id="read-in-the-sample-ids" class="section level1">
 <h1>read in the sample ids</h1>
-<p>samples &lt;- read.table(“~/data/users/j/r/jruizaro/largefiles/Copepods/sample_id.txt”, header=FALSE)</p>
-<p>samples &lt;- read.table(‘sample_id.txt’)</p>
+<p>samples &lt;- read.table(“C:/Users/jorge/Desktop/F-UVM - Grad/Third Year - Second Semester - UVM/Ecological Genomics/Epigenetics_data/Epigenetics_data/sample_id.txt”, quote=“&quot;”, comment.char=&quot;&quot;)</p>
 </div>
 <div id="now-point-to-coverage-files" class="section level1">
 <h1>now point to coverage files</h1>
@@ -1681,10 +1680,12 @@ summary(res_treatment_D_vs_C)
 </div>
 <div id="and-can-plot-all-of-our-samples-at-once-to-compare." class="section level1">
 <h1>and can plot all of our samples at once to compare.</h1>
+<p>par(mfrow=c(5,4))</p>
+<p>for(i in 1:length(myobj)) { getCoverageStats(myobj[[i]], plot = TRUE, both.strands = FALSE) #Get CpG coverage information } #Plot and save %CpG methylation information</p>
 </div>
 <div id="filter-samples-by-depth-with-filterbycoverage" class="section level1">
 <h1>filter samples by depth with filterByCoverage()</h1>
-<p>filtered.myobj &lt;- filterByCoverage(myobj, lo.count=20, lo.perc = NULL hi.count=NULL, hi.perc = 97.5)</p>
+<p>filtered.myobj=filterByCoverage(myobj,lo.count=20,lo.perc=NULL, hi.count=NULL,hi.perc=97.5)</p>
 <div id="section-2" class="section level6">
 <h6></h6>
 </div>
@@ -1698,8 +1699,9 @@ summary(res_treatment_D_vs_C)
 </div>
 <div id="use-unite-to-merge-all-the-samples.-we-will-require-sites-to-be-present-in-each-sample-or-else-will-drop-it" class="section level1">
 <h1>use unite() to merge all the samples. We will require sites to be present in each sample or else will drop it</h1>
-<p>meth &lt;- unite(filtered.myobj,mc.cores=3, suffix=“united”)</p>
-<p>meth &lt;- methylKit:::readMethylBaseDB()</p>
+<p>meth &lt;- unite(filtered.myobj,mc.cores=3, suffix=“united”, db.dir = “~/Users/jorge/Desktop/F-UVM - Grad/Third Year - Second Semester - UVM/Ecological Genomics/Epigenetics_data/”)</p>
+<p>######.</p>
+<p>meth &lt;- methylKit:::readMethylBaseDB( dbpath = “C:/Users/jorge/Desktop/F-UVM - Grad/Third Year - Second Semester - UVM/Ecological Genomics/Epigenetics_data/Epigenetics_data/methylBase_united.txt.bgz”, dbtype = “tabix”, sample.id = unlist(nmlist), assembly = “atonsa”, # this is just a string. no actual database context = “CpG”, resolution = “base”, treatment = c(0,0,0,0, 1,1,1,1, 2,2,2,2, 3,3,3,3, 4,4,4,4), destrand = FALSE)</p>
 </div>
 <div id="percmethylation-calculates-the-percent-methylation-for-each-site-and-sample" class="section level1">
 <h1>percMethylation() calculates the percent methylation for each site and sample</h1>
@@ -1709,24 +1711,25 @@ summary(res_treatment_D_vs_C)
 </div>
 <div id="calculate-and-plot-mean-methylation" class="section level1">
 <h1>calculate and plot mean methylation</h1>
-<p>sp/means &lt;- colMeans(pm)</p>
-<p>p.df &lt;- data.frame(sample=names(sp.means), group = substr(names(sp.means), 1,6), methylation = sp.means) ggplot(p.df, aes(x=group, y=methylation, color=group)) + stat_summary(color=“black”) + geom_jitter(width=0.1, size=3)</p>
+<p>sp.means &lt;- colMeans(pm)</p>
+<p>p.df &lt;- data.frame(sample=names(sp.means), group = substr(names(sp.means), 1,6), methylation = sp.means)</p>
+<p>ggplot(p.df, aes(x=group, y=methylation, color=group)) + stat_summary(color=“black”) + geom_jitter(width=0.1, size=3)</p>
 </div>
 <div id="sample-clustering" class="section level1">
 <h1>sample clustering</h1>
-<p>clusterSamples(meth, dist=“correlation”, methog=“ward.D”, plot = TRUE)</p>
+<p>clusterSamples(meth, dist=“correlation”, method=“ward.D”, plot=TRUE)</p>
 </div>
 <div id="pca" class="section level1">
 <h1>PCA</h1>
-<p>PCASamples()</p>
+<p>PCASamples(meth, screeplot=TRUE) PCASamples(meth, screeplot=FALSE)</p>
 </div>
 <div id="subset-with-reorganize" class="section level1">
 <h1>subset with reorganize()</h1>
-<p>meth_sub &lt;- reorganize(meth, sample.ids =c(“AA_F00_1”,“AA_F00_2”,“AA_F00_3”, “AA_F00_4”, “HH_F25_1”,“HH_F25_2”,“HH_F25_3”,“HH_F25_4”), treatment = c(0,0,0,0,1,1,1,1), save.db=FALSE)</p>
+<p>meth_sub &lt;- reorganize(meth, sample.ids= (c(“AA_F00_1”,“AA_F00_2”,“AA_F00_3”, “AA_F00_4”, “HH_F25_1”,“HH_F25_2”,“HH_F25_3”,“HH_F25_4”)), treatment=c(0,0,0,0,1,1,1,1), save.db=FALSE)</p>
 </div>
 <div id="calculate-differential-methylation" class="section level1">
 <h1>calculate differential methylation</h1>
-<p>myDiff &lt;- calculateDiffMeth(meth_sub, overdispersion=“MN”, mc.cores = 1, suffix =“AA_HH” adjust = “qvalue”, test = &quot;Chisq)</p>
+<p>myDiff=calculateDiffMeth(meth_sub, overdispersion=“MN”, mc.cores=1, suffix = “full_model”, adjust=“qvalue”,test=“Chisq”)</p>
 </div>
 <div id="get-all-differentially-methylated-bases" class="section level1">
 <h1>get all differentially methylated bases</h1>
@@ -1738,14 +1741,20 @@ summary(res_treatment_D_vs_C)
 </div>
 <div id="get-hyper-methylated-bases" class="section level1">
 <h1>get hyper methylated bases</h1>
+<p>hyper=getMethylDiff(myDiff,difference=10,qvalue=0.05,type=“hyper”)</p>
 </div>
 <div id="get-hypo-methylated-bases" class="section level1">
 <h1>get hypo methylated bases</h1>
+<p>hypo=getMethylDiff(myDiff,difference=10,qvalue=0.05,type=“hypo”)</p>
 <p>#heatmaps first</p>
 </div>
 <div id="get-percent-methylation-matrix" class="section level1">
 <h1>get percent methylation matrix</h1>
-<p>pm &lt;- percMethylation(meth_sub) # make a dataframe with snp id’s, methylation, etc. sig.in &lt;- as.numeric(row.names(myDiff)) pm.sig &lt;- pm[sig.in,]</p>
+<p>pm &lt;- percMethylation(meth_sub)</p>
+</div>
+<div id="make-a-dataframe-with-snp-ids-methylation-etc." class="section level1">
+<h1>make a dataframe with snp id’s, methylation, etc.</h1>
+<p>sig.in &lt;- as.numeric(row.names(myDiff)) pm.sig &lt;- pm[sig.in,]</p>
 </div>
 <div id="add-snp-chr-start-stop" class="section level1">
 <h1>add snp, chr, start, stop</h1>
@@ -1763,8 +1772,54 @@ summary(res_treatment_D_vs_C)
 </div>
 <div id="we-can-also-normalize" class="section level1">
 <h1>we can also normalize</h1>
-<p>ctrmean &lt;- rowMeans(pm.sig[,1:4]) h.norm &lt;- (pm.sig-ctrmean)</p>
+<p>ctrmean &lt;- rowMeans(pm.sig[,1:4])</p>
+<p>h.norm &lt;- (pm.sig-ctrmean)</p>
 <p>my_heatmap &lt;- pheatmap(h.norm, show_rownames = FALSE)</p>
+<div id="if-you-want-to-change-colors.-only-because-i-dont-love-the-default-colors." class="section level5">
+<h5>if you want to change colors. only because I don’t love the default colors.</h5>
+<p>paletteLength &lt;- 50 myColor &lt;- colorRampPalette(c(“cyan1”, “black”, “yellow1”))(paletteLength) myBreaks &lt;- c(seq(min(h.norm), 0, length.out=ceiling(paletteLength/2) + 1), seq(max(h.norm)/paletteLength, max(h.norm), length.out=floor(paletteLength/2)))</p>
+<p>my_heatmap &lt;- pheatmap(h.norm, color=myColor, breaks=myBreaks, show_rownames = FALSE)</p>
+</div>
+<div id="section-6" class="section level5">
+<h5></h5>
+<p>#let’s look at methylation of specific gene or snp ####</p>
+<p>df.out df.plot &lt;- df.out[,c(1,5:12)] %&gt;% pivot_longer(-snp, values_to = “methylation”) df.plot<span class="math inline">\(group &lt;- substr(df.plot\)</span>name,1,2) head(df.plot)</p>
+</div>
+</div>
+<div id="looking-at-snp-ls049205.1248" class="section level1">
+<h1>looking at snp LS049205.1:248</h1>
+</div>
+<div id="if-you-choose-a-different-snp-you-can-create-different-plots." class="section level1">
+<h1>if you choose a different snp, you can create different plots.</h1>
+<p>df.plot %&gt;% filter(snp==“LS049205.1:248”) %&gt;% ggplot(., aes(x=group, y=methylation, color=group, fill=group)) + stat_summary(fun.data = “mean_se”, size = 2) + geom_jitter(width = 0.1, size=3, pch=21, color=“black”)</p>
+<div id="write-bed-file-for-intersection-with-genome-annotation" class="section level2">
+<h2>write bed file for intersection with genome annotation</h2>
+<p>write.table(file = “C:/Users/jorge/Desktop/F-UVM - Grad/Third Year - Second Semester - UVM/Ecological Genomics/Epigenetics_data/diffmeth.bed”, data.frame(chr= df.out<span class="math inline">\(chr, start = df.out\)</span>start, end = df.out$end), row.names=FALSE, col.names=FALSE, quote=FALSE, sep=&quot;)</p>
+</div>
+</div>
+<div id="link-to-genes" class="section level1">
+<h1>link to genes</h1>
+</div>
+<div id="in-bash-on-server." class="section level1">
+<h1>in bash, on server.</h1>
+<p>/data/popgen/bedtools2/bin/bedtools closest -a diffmeth.bed<br />
+-b /data/project_data/epigenetics/GCA_900241095.1_Aton1.0_genomic.fa_annotation_table.bed<br />
+-D b |<br />
+awk ‘!($10==“-”)’ &gt; hits.bed</p>
+</div>
+<div id="the-annotation-file-here-has-the-format-scaffoldname-fromposition-toposition-sense-transcriptname-transcriptpath-geneaccession-genename-genealtnames-genepfam-genego-cellularcomponent-molecularfunction-biologicalprocess" class="section level1">
+<h1>the annotation file here has the format: ScaffoldName FromPosition ToPosition Sense TranscriptName TranscriptPath GeneAccession GeneName GeneAltNames GenePfam GeneGo CellularComponent MolecularFunction BiologicalProcess</h1>
+</div>
+<div id="note-that-the-hits.bed-file-will-paste-the-diffmeth.bed-file-before-the-annotation-table.-so-the-first-3-columns-are-fom-diffmeth.bed-then-next-8-from-the-annotation-table." class="section level1">
+<h1>note that the hits.bed file will paste the diffmeth.bed file before the annotation table. So the first 3 columns are fom diffmeth.bed, then next 8 from the annotation table.</h1>
+</div>
+<div id="count-up-number-of-hits" class="section level1">
+<h1>count up number of hits</h1>
+<p>cat hits.bed | wc -l</p>
+</div>
+<div id="count-number-of-unique-named-genes" class="section level1">
+<h1>count number of unique named genes</h1>
+<p>cat hits.bed | cut -f 8 | sort | uniq -c</p>
 <hr />
 <div id="id-section20"></div>
 
